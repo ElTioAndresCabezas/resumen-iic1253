@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Resumen general de Matemáticas Discretas}
+\author{Andrés Cabezas}
+
+\begin{document}
+
+\maketitle
+
+\section{¿Qué son las matemáticas discretas?}
+``El lenguaje necesario para entender y modelar la computación''. Las matemáticas discretas usan conjuntos finitos e infinitos al momento de estudio. Modelan los objetos y conceptos abstractos de las matemáticas que pueden ser representados dentro de un computador.
+\subsection{Lógica}
+La lógica consiste en el uso y estudio del razonamiento válido. Para esto, es necesario un lenguaje, pero esto también supone un problema: Los lenguajes que los humanos hablan tiene ciertas subjetividades y diferencias entre si, lo que conduce a errores al momento de usar la lógica. Para resolver esto, es necesario usar un lenguaje formal.\\
+Durante el curso, se estudiarán dos lógicas (o lenguajes), sin embargo, existen muchos más
+\begin{itemize}
+    \item Lógica Proposicional
+    \item Lógica de Predicados
+\end{itemize}
+\textbf{¿Para qué son necesarias estas lógicas?} Recordemos nuestro objetivo. Queremos usar esto para realizar nuestro razonamiento matemático. De esta forma, podemos definir correctamente objetos matemáticos, teorías matemáticas y realizar demostraciones más formales
+
+\section{Lógica Proposicional (LP)}
+\subsection{Proposición}
+Una proposición consiste en una afirmación, la cual puede ser \textit{verdadera (1)} o \textit{falsa (0)}.\\
+Para denotar proposiciones básicas, usaremos letras mayusculas (Ej.: P, Q, R\ldots)
+
+\subsection{Conectivos Lógicos}
+La LP usa conectivos sencillos para conseguir formar proposiciones más complejas. \\
+\[
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Conectivos & Nombre & Uso & Significado\\ \hline
+        $\wedge$ & Conjunción & $P \wedge{}Q$ & P y Q \\
+        $\vee$ & Disyunción & $P \vee{}Q$ & P o Q \\
+        $\neg$ & Negación & $\neg{}P$ & No P \\
+        $\rightarrow$ & Condicional & $P \rightarrow{}Q$ & Si P, entonces Q \\
+        $\leftrightarrow$ & Bicondicional & $P \leftrightarrow{}Q$ & P, si y solo si, Q \\ \hline
+    \end{tabular}
+\]
+\subsubsection{Conjunción ($\wedge$)}
+El valor de verdad de una conjunción es \textit{verdadero} si ambas proposiciones (a cada lado del signo) son verdaderas. En cualquier otro caso, es \textit{falso}.
+\[
+    \begin{tabular}{cc|c}
+        P & Q & $P \wedge{}Q$\\ \hline
+        0 & 0 & 0\\
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        1 & 1 & 1
+    \end{tabular}
+\]
+
+\subsubsection{Disyunción ($\vee$)}
+El valor de verdad de una disyunción es \textit{verdadero} si al menos una de las proposiciones (a cada lado del signo), es verdadera.
+\[
+    \begin{tabular}{cc|c}
+        P & Q & $P \vee{}Q$\\ \hline
+        0 & 0 & 0\\
+        0 & 1 & 1\\
+        1 & 0 & 1\\
+        1 & 1 & 1
+    \end{tabular}
+\]
+
+\subsubsection{Negación ($\neg$)}
+El valor de verdad corresponde al opuesto del valor entregado (a la derecha del signo)
+\[
+    \begin{tabular}{c|c}
+        P & $\neg{}P$\\ \hline
+        1 & 0\\
+        0 & 1 
+    \end{tabular}
+\]
+
+\subsubsection{Condicional ($\rightarrow$)}
+El valor de verdad de una condicional del tipo $P \rightarrow{}Q$ es \textit{falso} si P es verdadero, pero Q es falso. En cualquier otro caso, es \textit{verdadero}.\\
+\[
+    \begin{tabular}{cc|c}
+        P & Q & $P \rightarrow{}Q$\\ \hline
+        0 & 0 & 1\\
+        0 & 1 & 1\\
+        1 & 0 & 0\\
+        1 & 1 & 1
+    \end{tabular}
+\]
+Hint: \textit{``Si P es verdadero, entonces necesariamente Q es verdadero''}. Si P es verdadero, entonces Q deberá ser verdadero para tener un valor de verdad \textit{verdadero}. Si P es falso, entonces de forma automática el valor de verdad es \textit{verdadero}.
+
+\subsubsection{Bicondicional ($\leftrightarrow$)}
+El valor de verdad de una bicondicional es verdadero si ambas proposiciones (a ambos lados del signo) son iguales (en otras palabras, ambas verdaderas o ambas falsas).
+\[
+    \begin{tabular}{cc|c}
+        P & Q & $P \leftrightarrow{}Q$\\ \hline
+        0 & 0 & 1\\
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        1 & 1 & 1
+    \end{tabular}
+\]
+
+\subsection{Proposición Compuesta}
+Una proposición es compuesta si corresponde a la negación ($\neg$), conjunción ($\wedge$), disyunción($\vee$), condicional($\rightarrow$) o bicondicional( $\leftrightarrow$ ) de proposiciones compuestas.\\
+Como por ejemplo
+
+
+$$P \wedge (Q \vee{} R)$$
+$$\neg(P \vee (\neg{}R \wedge{} Q))$$
+$$(P \rightarrow{} Q) \leftrightarrow{} (P \wedge{} Q)$$
+
+
+
+Si se desea obtener el valor de verdad de alguna proposición compuesta, se debe evaluar de forma recursiva cada uno de los conectivos lógicos presentes.\\
+Por ejemplo:
+
+$$\neg(P \vee (\neg{} R \wedge{} Q)) \textrm{ con P = 0, Q = 1 y R = 0}$$
+$$\neg(0 \vee (\neg{} 0 \wedge{} 1))$$
+$$\neg(0 \vee (1 \wedge{} 1))$$
+$$\neg(0 \vee 1)$$
+$$\neg{}1$$
+$$0$$
+\\
+$$(P \rightarrow{} Q) \leftrightarrow{} (P \wedge{} Q) \text{ con P = 1 y Q = 0}$$
+$$(1 \rightarrow{} 0) \leftrightarrow{} (1 \wedge{} 0)$$
+$$0 \leftrightarrow{} 0$$
+$$1$$
+
+\subsubsection{Paréntesis y prioridad}
+El orden de prioridad entre conectivos lógicos, al momento de evaluar proposiciones compuestas, será el siguiente:
+\[
+    \begin{tabular}{c|c}
+        Conectivo & Precedencia\\ \hline
+        $\neg$ & 1\\
+        $\wedge$ & 2\\
+        $\vee$ & 3\\
+        $\rightarrow$ & 4\\
+        $\leftrightarrow$ & 5
+    \end{tabular}
+\]
+
+\section{Formulas y Valuaciones}
+\subsection{Variables Proposicionales}
+Una variable proposicional es una variable que puede ser reemplazada con los valores 1 o 0. Generalmente son representadas con una letra minúscula (Amiga eri boolean)
+
+\subsection{Formulas Proposicionales}
+Una formula proposicional es una formula que puede ser
+\begin{itemize}
+    \item Una variable proposicional
+    \item Los valores 1 o 0
+    \item Una combinación con conectivos lógicos
+\end{itemize}
+Generalmente son representadas con letras griegas (Ej.: $\alpha$)\\
+Ejemplos:
+$$\alpha{}(p,q,r) := p \wedge{}(q \rightarrow{} r)$$
+$$\beta{}(p,q) := (p \wedge{} \neg{}q) \vee{} (\neg{}p \wedge{} 1)$$
+
+\section{Equivalencia Lógica}
+\subsection{Definición}
+Si tenemos dos formulas proposicionales con las mismas variables proposicionales
+$$\alpha{}(p_{1},\ldots{},p_{n}) \text{ y } \beta{}(p_{1},\ldots{},p_{n})$$
+Entonces, $\alpha$ y $\beta$ serán logicamente equivalentes
+$$\alpha \equiv \beta$$
+si para toda valuacion posible $(v_{1}, \ldots{},v_{n})$ se cumple que:
+$$\alpha{}(v_{1}, \ldots{},v_{n}) = \beta{}(v_{1}, \ldots{},v_{n})$$
+
+\end{document}
