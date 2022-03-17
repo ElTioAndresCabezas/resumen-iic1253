@@ -159,5 +159,54 @@ Entonces, $\alpha$ y $\beta$ serán logicamente equivalentes
 $$\alpha \equiv \beta$$
 si para toda valuacion posible $(v_{1}, \ldots{},v_{n})$ se cumple que:
 $$\alpha{}(v_{1}, \ldots{},v_{n}) = \beta{}(v_{1}, \ldots{},v_{n})$$
+Ejemplo:
+Para las fórmulas $p \wedge (q \vee r)$ y $(p \wedge q) \vee (p \wedge r)$ se tiene la siguiente tabla de verdad:
+\[
+    \begin{tabular}{ccc|cc}
+        p & q & r & $p \wedge (q \vee r)$ & $(p \wedge q) \vee (p \wedge r)$ \\ \hline
+        0 & 0 & 0 & 0 & 0\\
+        0 & 0 & 1 & 0 & 0\\
+        0 & 1 & 0 & 0 & 0\\
+        0 & 1 & 1 & 0 & 0\\
+        1 & 0 & 0 & 0 & 0\\
+        1 & 0 & 1 & 1 & 1\\
+        1 & 1 & 0 & 1 & 1\\
+        1 & 1 & 1 & 1 & 1
+    \end{tabular}
+\]
+Como ambas formulas son equivalentes para toda valuación, entonces:
+$$p \wedge (q \vee r) \equiv (p \wedge q) \wedge (p \wedge r)$$
 
+\subsection{Equivalencias útiles}
+\begin{enumerate}
+    \item Conmutatividad: 
+                        $$p \wedge q \equiv q \wedge p$$ 
+                        $$p \vee q \equiv q \vee p$$
+    \item Asociatividad: 
+                        $$p \wedge (q \wedge r) \equiv (p \wedge q) \wedge r$$
+                        $$p \vee (q \vee r) \equiv (p \vee q) \vee r$$
+    \item Idempotente:
+                        $$p \wedge p \equiv p$$
+                        $$p \vee p \equiv p$$
+    \item Doble negación:
+                        $$\neg\neg p \equiv p$$
+    \item Distributividad:
+                        $$p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r)$$
+                        $$p \vee (q \wedge r) \equiv (p \vee q) \wedge (p \vee r)$$
+    \item De Morgan:
+                        $$\neg (p \wedge q) \equiv \neg p \vee \neg q$$
+    \item Implicación:
+                        $$p \rightarrow q \equiv \neg p \vee q$$
+                        $$p \rightarrow q \equiv \neg q \rightarrow \neg p$$
+                        $$p \leftrightarrow q \equiv (p \rightarrow q) \wedge (q \rightarrow p)$$
+    \item Absorción:
+                        $$p \vee (p \wedge q) \equiv p$$
+                        $$p \wedge (p \vee q) \equiv p$$
+    \item Identidad:
+                        $$p \vee 0 \equiv p$$
+                        $$p \wedge 1 \equiv p$$
+    \item Dominación:
+                        $$p \wedge 0 \equiv 0$$
+                        $$p \vee 1 \equiv 1$$
+\end{enumerate}
 \end{document}
