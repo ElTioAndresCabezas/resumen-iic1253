@@ -1,6 +1,9 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{fullpage}
+\usepackage[table, x11names]{xcolor}
+
+\usepackage[bookmarks]{hyperref}
 
 \title{Resumen general de Matemáticas Discretas}
 \author{Andrés Cabezas y Sebastián Poblete}
@@ -210,4 +213,121 @@ $$p \wedge (q \vee r) \equiv (p \wedge q) \wedge (p \wedge r)$$
                         $$p \wedge 0 \equiv 0$$
                         $$p \vee 1 \equiv 1$$
 \end{enumerate}
+
+\section{Operadores Generalizados}
+Debido a que $\vee$ y $\wedge$ son operadores asociativos, podemos escribir las siguientes generalizaciones
+$$\bigvee_{i=1}^{n} p_{i} \equiv{} p_{1} \vee{} p_{2} \vee{} \ldots{} \vee{} p_{n}$$
+$$\bigwedge_{i=1}^{n} p_{i} \equiv{} p_{1} \wedge{} p_{2} \wedge{} \ldots{} \wedge{} p_{n}$$
+Además, podemos saltarnos los parentesis al momento de escribir estas operaciones. Por ejemplo:
+$$(p_{1} \vee{} p_{2}) \vee{} p_{3} \equiv{} p_{1} \vee{} (p_{2} \vee{} p_{3}) \equiv{} p_{1} \vee{} p_{2} \vee{} p_{3}$$
+$$(p_{1} \wedge{} p_{2}) \wedge{} p_{3} \equiv{} p_{1} \wedge{} (p_{2} \wedge{} p_{3}) \equiv{} p_{1} \wedge{} p_{2} \wedge{} p_{3}$$
+
+
+\section{Formas normales}
+Primero, consideremos que un \textit{literal} es una variable proposicional o la negación de una variable.\\
+\subsection{Forma Normal Disyuntiva (DNF)}
+Una formula $\alpha$ está en DNF si es una disyunción de conjunciones de literales.
+$$\alpha{} = \beta{}_{1} \vee{} \beta{}_{2} \vee{} \ldots{} \vee{} \beta{}_{k}$$
+donde $\beta{}_{i} = (l_{i_{1}} \wedge{} \ldots{} \wedge{} l_{i_{k_{i}}})$ y $l_{i_{1}}, \ldots{}, l_{i_{k_{i}}}$ son literales.\\
+Por si esta forma de anotarlo es muy complicada de entender, en palabras más simples, nos referimos a que $\alpha$ está en DNF si es que es una formula proposicional tal que este compuesta por disyunciones de otras formulas, las cuales son conjunciones de variables proposicionales.\\
+Ejemplo:
+    $$(p \wedge{} \neg{} q) \vee{} (\neg{} p \wedge{} p \wedge{} s) \vee{} (r \wedge{} \neg{} s)$$
+
+\subsection{Forma Normal Conjuntiva (CNF)}
+Una formula $\alpha$ está en CNF si es una conjuncion de disyunciones de literales.
+$$\alpha{} = \beta{}_{1} \wedge{} \beta{}_{2} \wedge{} \ldots{} \wedge{} \beta{}_{k}$$
+donde $\beta{}_{i} = (l_{i_{1}} \vee{} \ldots{} \vee{} l_{i_{k_{i}}})$ y $l_{i_{1}}, \ldots{}, l_{i_{k_{i}}}$ son literales.\\
+Al final, la idea de la CNF es algo así como una ``forma inversa'' de la DNF, ya que se invierte que es lo que se encuentra en disyunción y lo que se encuentra en conjunción.\\
+Ejemplo:
+    $$(p \vee{} \neg{} q) \wedge{} (\neg{} p \vee{} p \vee{} s) \wedge{} (r \vee{} \neg{} s)$$
+
+\subsection{Formas normales y Equivalencia lógica}
+Tenemos el siguiente teorema:
+\begin{enumerate}
+    \item Toda formula $\alpha$ es lógicamente equivalente a una formula en DNF.
+    \item Toda formula $\alpha$ es lógicamente equivalente a una formula en CNF.
+\end{enumerate}
+Debido a las limitadas herramientas de demostración que tenemos por el momento, la demostración será escrita a futuro en esta parte del resumen. En caso de estar estudiando con este resumen, no considere la demostración hasta tener las herramientas suficientes como para demostrar.
+
+\section{Consecuencia Lógica}
+Sea $\Sigma{} = \{\alpha{}_{1}, \ldots{}, \alpha{}_{m} \}$ un conjunto de formulas con variables $p_{1}, \ldots{}, p_{n}$. Diremos que $\alpha$ es \textit{consecuencia lógica} de $\Sigma$ si, y solo si, para toda valuación $v_{1}, \ldots{}, v_{n}$ se tiene que
+\[ \text{si } [ \bigwedge_{i=1}^{m} \alpha{}_{i} ] (v_{1}, \ldots{}, v_{n}) = 1 \text{, entonces } \alpha{}(v_{1}, \ldots{}, v_{n}) = 1 \]
+Esto se denota como $\Sigma{} \models{} \alpha$ (leido como $\alpha$ \textit{es consecuencia lógica de} $\Sigma$)\\
+Posiblemente no quede del todo claro el significado de esta formula, pero en palabras, lo que queremos decir es que si tenemos una valuación, tal que al aplicarla a toda formula presente en el conjunto retorne 1, entonces si una formula es consecuencia lógica del conjunto, esta debe también retornar 1.\\
+Si lo intentamos ver con una tabla de verdad, a modo de ejemplo, una consecuencia lógica se vería de la siguiente 
+forma:
+\[
+    \begin{tabular}{ccc|cccc|c}
+        $v_{1}$ & $\cdots{}$ & $v_{n}$ & $\alpha{}_{1}$ & $\alpha{}_{2}$ & $\cdots{}$ & $\alpha{}_{m}$ & $\alpha$ \\ \hline
+                             $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 1 & 1 & $\cdots$ & 0 & 1 \\
+        \rowcolor{lightgray} $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 1 & 1 & $\cdots$ & 1 & 1 \\
+                             $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 0 & 0 & $\cdots$ & 1 & 0 \\
+    \end{tabular}
+\]
+En donde tenemos una fila marcada en gris, en donde podemos ver que todas las formulas del conjunto $\Sigma$ son iguales a 1 y tambien que $\alpha$ es 1. Si esta condición se cumple \textbf{siempre}, entonces estamos en presencia de una consecuencia lógica.\\
+Otro ejemplo:
+\[
+    \begin{tabular}{ccc|cccc|c}
+        $v_{1}$ & $\cdots{}$ & $v_{n}$ & $\alpha{}_{1}$ & $\alpha{}_{2}$ & $\cdots{}$ & $\alpha{}_{m}$ & $\alpha$ \\ \hline
+                             $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 1 & 1 & $\cdots$ & 0 & 1 \\
+        \rowcolor{lightgray} $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 1 & 1 & $\cdots$ & 1 & 0 \\
+                             $\cdots{}$ & $\cdots{}$ & $\cdots{}$ & 0 & 0 & $\cdots$ & 1 & 0 \\
+    \end{tabular}
+\]
+En este caso, ya no hay consecuencia lógica, debido a que no se cumple la condición establecida antes.\\
+\textbf{NOTA:} Si tenemos un conjunto $\Sigma$ tal que es imposible obtener una fila con solo unos, entonces \textbf{cualquier cosa} puede ser consecuencia lógica de $\Sigma$. ¡Usar con sabiduria para demostraciones!
+
+\subsection{Consecuencias lógicas clásicas}
+\subsubsection{Modus ponens}
+$$ \{ p, p \rightarrow{} q \} \models{} q $$
+\[
+    \begin{tabular}{cc|cc|c}
+        p & q & $p$ & $p \rightarrow{} q$ & $q$ \\ \hline
+        0 & 0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 0 \\
+        \rowcolor{lightgray} 1 & 1 & 1 & 1 & 1 \\
+    \end{tabular}
+\]
+
+\subsubsection{Modus tollens}
+$$\{ \neg{} q, p \rightarrow q \} \models{} \neg{} p$$
+\[
+    \begin{tabular}{cc|cc|c}
+        p & q & $p$ & $p \rightarrow{} q$ & $q$ \\ \hline
+        \rowcolor{lightgray} 0 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 \\
+        1 & 0 & 1 & 0 & 0 \\
+        1 & 1 & 0 & 1 & 0 \\
+    \end{tabular}
+\]
+
+\subsubsection{Resolución}
+$$\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$$
+\[
+    \begin{tabular}{ccc|cc|c}
+        p & q & r & $p \vee{} q$ & $\neg{} q \vee{} r$ & $p \vee{} r$ \\ \hline
+        0 & 0 & 0 & 0 & 1 & 0\\
+        0 & 0 & 1 & 0 & 1 & 1\\
+        0 & 1 & 0 & 1 & 0 & 0\\
+        \rowcolor{lightgray} 0 & 1 & 1 & 1 & 1 & 1\\
+        \rowcolor{lightgray} 1 & 0 & 0 & 1 & 1 & 1\\
+        \rowcolor{lightgray} 1 & 0 & 1 & 1 & 1 & 1\\
+        1 & 1 & 0 & 1 & 0 & 1\\
+        \rowcolor{lightgray} 1 & 1 & 1 & 1 & 1 & 1\\
+    \end{tabular}
+\]
+
+\subsection{Trucos de consecuencia lógica}
+\begin{enumerate}
+    \item $\{ 1 \} \models{} \alpha{}$, entonces $\alpha$ es una tautología
+    \item Si $\alpha$ es una contradicción, entonces $\{ \alpha{} \} \models{} \beta{}$
+    \item Si $\Sigma{} \models{} \alpha{}$, entonces $\Sigma{} \cup{} \{ \beta{} \} \models{} \alpha{}$ para todo $\beta$
+    \item Si $\Sigma{} \cup{} \{ \alpha{} \} \models{} \beta{}$ y $\Sigma{} \models{} \alpha{}$, entonces $\Sigma{} \models{} \beta{}$
+\end{enumerate}
+
+
+
+
+
 \end{document}
