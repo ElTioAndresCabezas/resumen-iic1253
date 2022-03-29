@@ -326,6 +326,44 @@ $$\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$$
     \item Si $\Sigma{} \cup{} \{ \alpha{} \} \models{} \beta{}$ y $\Sigma{} \models{} \alpha{}$, entonces $\Sigma{} \models{} \beta{}$
 \end{enumerate}
 
+\subsection{Más consecuencias lógicas clásicas}
+A continuación, vamos a mostrar más consecuencias lógicas, sumando a la lista en 7.1
+\begin{enumerate}
+    \item Modus ponens: $ \{ p, p \rightarrow{} q \} \models{} q $
+    \item Modus tollens: $\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$
+    \item Silogismo: $\{ p \rightarrow{} q, q \rightarrow{} r \} \models{} p \rightarrow{} r$
+    \item Silogismo disyuntivo: $\{ p \vee{} q, \neg{} p \} \models{} q$
+    \item Conjunción: $\{ p, q \} \models{} p \wedge{} q$
+    \item Simplificación Conjuntiva: $\{ p \wedge{} q \} \models p$
+    \item Amplificación Disyuntiva: $ \{ p \} \models{} p \vee{} q$
+    \item Demostración Condicional: $\{ p \wedge{} q, p \rightarrow{} (q \rightarrow{} r) \} \models{} r$
+    \item Demostración por casos: $\{ p \rightarrow{} r, q \rightarrow{} r \} \models (p \vee{} q) \rightarrow{} r$
+\end{enumerate}
+
+\subsection{Composición y Consecuencia lógica}
+\subsubsection{Definición}
+Considerando un conjunto $\Sigma{} = \{ \alpha{}_{1}(p_{1}, \ldots{}, p_{n}), \ldots{}, \alpha{}_{m}(p_{1}, \ldots{}, p_{n}) \}$ y $\beta{}_{1}, \ldots{}, \beta{}_{n}$ como formulas proposicionales.\\
+Una composición $\Sigma{}(\beta{}_{1}, \ldots{}, \beta{}_{n})$, consiste en el conjunto resultante de valuar cada formula de $\Sigma$ con $\beta{}_{1}, \ldots{}, \beta{}_{n}$. En otras palabras:\\
+\large $$\Sigma{}(\beta{}_{1}, \ldots{}, \beta{}_{n}) = \{ \alpha{}_{1}(\beta{}_{1}, \ldots{}, \beta{}_{n}), \ldots{}, \alpha{}_{m}(\beta{}_{1}, \ldots{}, \beta{}_{n}) \}$$
+\normalsize
+
+\subsubsection{Teorema}
+Sea $\Sigma$ un conjunto de formulas (similar al de antes), y $\alpha{}, \beta{}_{1}, \ldots{}, \beta{}_{n}$, formulas proposicionales. Si $\Sigma{} \models{} \alpha{}$, entonces $\Sigma{}(\beta{}_{1}, \ldots{}, \beta{}_{n}) \models{} \alpha{}(\beta{}_{1}, \ldots{}, \beta{}_{n})$.
+
+\section{Satisfacibilidad}
+\subsection{Satisfacción de un conjunto de formulas}
+Se dice que una formula proposicional $\alpha(p_{1}, \ldots{}, p_{n})$ es satisfacible si existe una valuación $v_{1}, \ldots{}, v_{n}$ tal que
+$$\alpha{}(v_{1}, \ldots{}, v_{n}) = 1$$
+Un conjunto $\Sigma = \{ \alpha{}_{1}, \ldots{}, \alpha{}_{m} \}$ con variables $p_{1}, \ldots{}, p_{n}$ se dice que es satisfacible si existe una valuacion $v_{1}, \ldots{}, v_{n}$ tal que
+$$[ \bigwedge_{i = 1}^{m} = \alpha{}_{i} ] (v_{1}, \ldots{}, v_{n}) = 1$$
+Si un conjunto o formula no es satisfacible, entonces se dice que es inconsistente.\\
+
+\subsection{Consecuencia lógica vs satisfacibilidad}
+\textbf{Teorema:} $\{\alpha{}_{1}, \ldots{}, \alpha{}_{m}\} \models{} \alpha{}$ si y solo si $\{ \alpha{}_{1}, \ldots{}, \alpha{}_{m}, \neg{} \alpha \}$ es inconsistente.
+
+\subsection{Satisfacibilidad y representación de problemas}
+\textbf{Problema:} Dada una formula $\alpha$, verificar si es o no satisfacible.\\
+¿Como podemos resolver este problema? Si bien es posible ir probando todas las posibles valuaciones para verificar, es un proceso largo y poco eficiente. Tristemente, la respuesta a este problema, es que no es posible. No existe ningun otro método al momento de verificar si una formula es o no es consistente.
 
 
 
