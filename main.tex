@@ -2,8 +2,8 @@
 \usepackage{amsmath}
 \usepackage{fullpage}
 \usepackage[table, x11names]{xcolor}
-
 \usepackage[bookmarks]{hyperref}
+\usepackage{dsfont}
 
 \title{Resumen general de Matemáticas Discretas}
 \author{Andrés Cabezas y Sebastián Poblete}
@@ -161,7 +161,7 @@ Si tenemos dos formulas proposicionales con las mismas variables proposicionales
 $$\alpha{}(p_{1},\ldots{},p_{n}) \text{ y } \beta{}(p_{1},\ldots{},p_{n})$$
 Entonces, $\alpha$ y $\beta$ serán logicamente equivalentes
 $$\alpha \equiv \beta$$
-si para toda valuacion posible $(v_{1}, \ldots{},v_{n})$ se cumple que:
+si para toda valuación posible $(v_{1}, \ldots{},v_{n})$ se cumple que:
 $$\alpha{}(v_{1}, \ldots{},v_{n}) = \beta{}(v_{1}, \ldots{},v_{n})$$
 Ejemplo:
 Para las fórmulas $p \wedge (q \vee r)$ y $(p \wedge q) \vee (p \wedge r)$ se tiene la siguiente tabla de verdad:
@@ -354,7 +354,7 @@ Sea $\Sigma$ un conjunto de formulas (similar al de antes), y $\alpha{}, \beta{}
 \subsection{Satisfacción de un conjunto de formulas}
 Se dice que una formula proposicional $\alpha(p_{1}, \ldots{}, p_{n})$ es satisfacible si existe una valuación $v_{1}, \ldots{}, v_{n}$ tal que
 $$\alpha{}(v_{1}, \ldots{}, v_{n}) = 1$$
-Un conjunto $\Sigma = \{ \alpha{}_{1}, \ldots{}, \alpha{}_{m} \}$ con variables $p_{1}, \ldots{}, p_{n}$ se dice que es satisfacible si existe una valuacion $v_{1}, \ldots{}, v_{n}$ tal que
+Un conjunto $\Sigma = \{ \alpha{}_{1}, \ldots{}, \alpha{}_{m} \}$ con variables $p_{1}, \ldots{}, p_{n}$ se dice que es satisfacible si existe una valuación $v_{1}, \ldots{}, v_{n}$ tal que
 $$[ \bigwedge_{i = 1}^{m} = \alpha{}_{i} ] (v_{1}, \ldots{}, v_{n}) = 1$$
 Si un conjunto o formula no es satisfacible, entonces se dice que es inconsistente.\\
 
@@ -364,6 +364,36 @@ Si un conjunto o formula no es satisfacible, entonces se dice que es inconsisten
 \subsection{Satisfacibilidad y representación de problemas}
 \textbf{Problema:} Dada una formula $\alpha$, verificar si es o no satisfacible.\\
 ¿Como podemos resolver este problema? Si bien es posible ir probando todas las posibles valuaciones para verificar, es un proceso largo y poco eficiente. Tristemente, la respuesta a este problema, es que no es posible. No existe ningun otro método al momento de verificar si una formula es o no es consistente.
+
+\section{Lógica de Predicados}
+Hasta ahora, se ha trabajado unicamente con Lógica Proposicional. Esta funciona bien, pero tiene algunas limitaciones que vuelven imposible modelar algunas situaciones.
+\begin{itemize}
+    \item No tiene objetos. Solo se pueden usar proposiciones.
+    \item No tiene predicados.
+    \item No tiene cuantificadores.
+\end{itemize}
+
+\subsection{¿Y qué tiene la Lógica de Predicados?}
+La lógica de predicados es una parte de la lógica de primer orden. La lógica de predicados nos va a permitir expresar ciertas estructuras las cuales no eramos capaces de expresar usando la lógica proposicional.
+
+\subsection{Predicados}
+Un predicado consiste en una proposicion abierta. El valor de verdad de un predicado dependerá del valor usado en la valuación. Generalmente, estos se simbolizan usando letras mayúsculas (Ej.: $P(x)$)\\
+Ejemplos de predicados:
+\begin{itemize}
+    \item $P(x)$ := x es par
+    \item $R(x)$ := x es primo
+    \item $M(x)$ := x es mortal
+\end{itemize}
+
+\subsubsection{Predicados n-arios}
+Los predicados n-arios consisten en predicados los cuales usan más de una variable para verificar su valor de verdad.\\
+Ejemplo: $O(x,y) := x \leq y $. Si $x = 2$ e $y = 3$, entonces $O(2,3) = 1$
+Destacar que 
+
+\subsection{Dominio de predicado}
+Todo predicado está restringido a un cierto dominio de evaluación. Esto significa que sus valores de verdad solo se pueden evaluar cuando las variables que se usan en el predicado estan dentro del dominio designado.
+Ej.: $O(x,y) := x \leq{} y$ sobre $\mathds{N}$
+
 
 
 
