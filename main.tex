@@ -388,14 +388,43 @@ Ejemplos de predicados:
 \subsubsection{Predicados n-arios}
 Los predicados n-arios consisten en predicados los cuales usan más de una variable para verificar su valor de verdad.\\
 Ejemplo: $O(x,y) := x \leq y $. Si $x = 2$ e $y = 3$, entonces $O(2,3) = 1$
-Destacar que 
 
-\subsection{Dominio de predicado}
+\subsubsection{Dominio de predicado}
 Todo predicado está restringido a un cierto dominio de evaluación. Esto significa que sus valores de verdad solo se pueden evaluar cuando las variables que se usan en el predicado estan dentro del dominio designado.
 Ej.: $O(x,y) := x \leq{} y$ sobre $\mathds{N}$
 
+\subsubsection{Predicado 0-ario / Predicado degenerado}
+Corresponde a un predicado que no tiene ninguna variable libre. Tiene un valor de verdad el cual es totalmente independiente de su valuación.
 
+\subsubsection{Predicados compuestos}
+Un predicado compuesto corresponde a la combinación de diversos predicados básicos, usando distintos operadores para mezclarlos en la sentencia, o la cuantificación universal o existencial de algun predicado (Véase \hyperref[sec:cuantificadores]{sección 9.3}). Todos los predicados deben tener el mismo dominio.
 
+\subsection{Cuantificadores}
+\label{sec:cuantificadores}
+\subsubsection{Cuantificador Universal}
+Consideremos $P(x, y_{1}, \ldots{}, y_{n})$ un predicado compuesto de dominio \textit{D}.\\
+El cuantificador universal corresponde a
+$$P'(y_{1}, \ldots{}, y_{n}) := \forall{} x . P(x, y_{1}, \ldots{}, y_{n})$$
+donde $x$ es la variable cuantificada e $y_{1}, \ldots{}, y_{n}$ son las variables libres.\\
+Si para cierta valuación se cumple que $P'(\ldots{}) = 1$ significa que para toda variable libre se cumple lo especificado anteriormente.\\
+\textbf{Ejemplo}
+$$O(x,y) := x \leq y \text{ sobre } \mathds{N}$$
+$$O'(y) := \forall x . O(x,y)$$
+$$O'(2) = \forall x. O(x,2) = 0$$
+Podemos notar que para $y = 2$, no se cumple para todo valor de $x$ lo dictado en el predicado $O(x,y)$
+$$O''(x) := \forall y . O(x,y)$$
+$$O''(0) := \forall y . O(0,y) = 1$$
+Si $x = 0$, debido a que estamos considerando a los naturales, entonces para todo valor de $y$ se cumple siempre el predicado.
 
+\subsubsection{Cuantificador Existencial}
+Consideremos $P(x, y_{1}, \ldots{}, y_{n})$ un predicado compuesto de dominio \textit{D}.\\
+El cuantificador existencial corresponde a
+$$P'(y_{1}, \ldots{}, y_{n}) := \exists x . P(x, y_{1}, \ldots{}, y_{n})$$
+donde $x$ es la variable cuantificada e $y_{1}, \ldots{}, y_{n}$ son las variables libres.\\
+Si para cierta valuación se cumple que $P'(\ldots{}) = 1$ significa que para alguna combinación de variables libres se cumple lo especificado anteriormente.\\
+\textbf{Ejemplo}
+$$O(x,y) := x \leq y \text{ sobre } \mathds{N}$$
+$$O'(y) := \exists x . O(x,y)$$
+$$O'(2) = \exists x. O(x,2) = 1$$
 
 \end{document}
