@@ -156,6 +156,7 @@ $$\alpha{}(p,q,r) := p \wedge{}(q \rightarrow{} r)$$
 $$\beta{}(p,q) := (p \wedge{} \neg{}q) \vee{} (\neg{}p \wedge{} 1)$$
 
 \section{Equivalencia Lógica}
+\label{sec:equiv_logica}
 \subsection{Definición}
 Si tenemos dos formulas proposicionales con las mismas variables proposicionales
 $$\alpha{}(p_{1},\ldots{},p_{n}) \text{ y } \beta{}(p_{1},\ldots{},p_{n})$$
@@ -182,6 +183,7 @@ Como ambas formulas son equivalentes para toda valuación, entonces:
 $$p \wedge (q \vee r) \equiv (p \wedge q) \wedge (p \wedge r)$$
 
 \subsection{Equivalencias útiles}
+\label{sec:equiv_logica_util}
 \begin{enumerate}
     \item Conmutatividad: 
                         $$p \wedge q \equiv q \wedge p$$ 
@@ -426,5 +428,51 @@ Si para cierta valuación se cumple que $P'(\ldots{}) = 1$ significa que para al
 $$O(x,y) := x \leq y \text{ sobre } \mathds{N}$$
 $$O'(y) := \exists x . O(x,y)$$
 $$O'(2) = \exists x. O(x,2) = 1$$
+
+\subsection{Interpretaciones}
+En algunos casos, puede ocurrir que algún predicado o formula, dependiendo de ciertas condiciones, sea verdadero(a)
+o falso(a). Debido a esto, vamos a definir las \textit{interpretaciones}.\\
+Para comenzar, es importante destacar que desde ahora diremos que $P(x_{1}, \ldots, x_{n})$ es un símbolo de predicado.\\
+Una interpretación $\mathcal{I}$ para símbolo de predicado $P_{1}, \ldots, P_{m}$ se compone de
+\begin{itemize}
+    \item Un dominio $\mathcal{I}(\text{dom})$
+    \item Para cada símbolo $P_{i}$, un predicado $\mathcal{I}(P_{i})$
+\end{itemize}
+Sea $\alpha{}(x_{1}, \ldots, x_{n})$ una formula y $\mathcal{I}$ una interpretación de los símbolos en $\alpha$. Se dice que la interpretación $\mathcal{I}$ satisface $\alpha$ sobre $a_{1}, \ldots, a_{n}$ en $\mathcal{I}(\text{dom})$, expresado como
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+si $\alpha{}(a_{1}, \ldots, a_{n})$ es verdadero al evaluar cada símbolo en $\alpha$ según $\mathcal{I}$. En el caso que $\mathcal{I}$ no logre satisfacer a $\alpha$, se anotará como
+$$\mathcal{I} \not\models \alpha{}(a_{1}, \ldots, a_{n})$$
+\textbf{Ejemplo}
+$$\mathcal{I}_{1}(\text{dom}) := \mathds{N}$$
+$$\mathcal{I}_{1}(P) := \text{x es par}$$
+$$\mathcal{I}_{1}(O) := x < y$$
+$$\alpha{}(x) := \exists y . P(y) \wedge O(x,y)$$
+$$\mathcal{I}_{1} \models \alpha{}(1) := \exists y. \text{y es par} \wedge 1 < y$$
+
+\section{Equivalencia lógica en Lógica de Predicados}
+Se tiene $\alpha{}(x_{1}, \ldots, x_{n})$ y $\beta{}(x_{1}, \ldots, x_{n})$ dos oraciones en lógica de predicados (no tienen variables libres). $\alpha$ y $\beta$ serán logicamente equivalentes, escrito como:
+$$\alpha \equiv \beta$$
+si para toda interpretación $\mathcal{I}$ y para todo $a_{1}, \ldots, a_{n}$ se cumple que:
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n}) \text{ si, y solo si, } \mathcal{I} \models \beta{}(a_{1}, \ldots, a_{n})$$
+En otras palabras, funciona practicamente igual a la \hyperref[sec:equiv_logica]{equivalencia lógica en lógica 
+proposicional}.
+
+\subsection{Equivalencias lógicas}
+Todas las \hyperref[sec:equiv_logica_util]{equivalencias de lógica proposicional} aplican aquí. Simplemente se tienen que cambiar las variables proposicionales por predicados de lógica de predicados. Aquí se muestra un ejemplo:\\
+\textbf{Conmutatividad} (para operador $\wedge$)
+\[    
+    \begin{tabular}{|c|c|}
+        \hline
+        En lógica proposicional & En lógica de predicados\\ \hline
+        $p \wedge{} q \equiv{} q \wedge{} p$ & $\alpha{} \wedge{} \beta{} \equiv{} \beta{} \wedge{} \alpha{}$ \\ \hline
+    \end{tabular}
+\]
+Ahora, además de estas equivalencias, nos encontraremos con algunas nuevas
+\begin{enumerate}
+    \item $\neg \forall x . \alpha \equiv \exists x . \neg \alpha$
+    \item $\neg \exists x . \alpha \equiv \forall x . \neg \alpha$
+    \item $\forall x . (\alpha \wedge \beta) \equiv (\forall x . \alpha) \wedge (\forall x . \beta)$
+    \item $\forall x . (\alpha \vee \beta) \equiv (\forall x . \alpha) \vee (\forall x . \beta)$
+\end{enumerate}
 
 \end{document}
