@@ -475,4 +475,49 @@ Ahora, además de estas equivalencias, nos encontraremos con algunas nuevas
     \item $\forall x . (\alpha \vee \beta) \equiv (\forall x . \alpha) \vee (\forall x . \beta)$
 \end{enumerate}
 
+\section{Tautología en Lógica de Predicados}
+Sea $\alpha{}(x_{1}, \ldots, x_{n})$ una fórmula con variables libres $(x_{1}, \ldots, x_{n})$. $\alpha$ es tautología si para toda interpretación $\mathcal{I}$ y para todo $(a_{1}, \ldots, a_{n})$ en $\mathcal{I}(\text{dom})$ se tiene que:
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+
+\section{Consecuencia lógica en Lógica de Predicados}
+Una oración de lógica de predicados $\alpha$ es consecuencia lógica de un conjunto de oraciones $\Sigma$ si para toda interpretación $\mathcal{I}$ y para todo $(a_{1}, \ldots, a_{n})$ en $\mathcal{I}(\text{dom})$ se cumple que
+$$\text{si } \mathcal{I} \models \Sigma{}(a_{1}, \ldots, a_{n}) \text{ entonces } \mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+Si $\alpha$ es consecuencia lógica de $\Sigma$, entonces se denota como
+$$\Sigma \models \alpha$$
+
+\section{Inferencia en Lógica de Predicados}
+\begin{enumerate}
+    \item \textbf{Instanciación Universal}
+    \[
+        \begin{tabular}{c}
+        $\forall{} x . \alpha{} (x)$ \\ \hline
+        $\alpha{} (a)$ para cualquier a
+        \end{tabular}
+    \]
+    \item \textbf{Generalización Universal}
+    \[
+        \begin{tabular}{c}
+            $\alpha{} (a)$ para cualquier a \\ \hline
+            $\forall{} x . \alpha{} (x)$
+        \end{tabular}
+    \]
+    \item \textbf{Instanciación Existencial}
+    \[
+        \begin{tabular}{c}
+        $\exists{} x . \alpha{} (x)$ \\ \hline
+        $\alpha{} (a)$ para algún a (nuevo)
+        \end{tabular}
+    \]
+    \item \textbf{Generalización Existencial}
+    \[
+        \begin{tabular}{c}
+        $\alpha{} (a)$ para algún a\\ \hline
+        $\exists{} x . \alpha{} (x)$
+        \end{tabular}
+    \]
+
+\end{enumerate}
+
+
+
 \end{document}
