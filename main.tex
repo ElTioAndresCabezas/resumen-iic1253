@@ -518,6 +518,40 @@ $$\Sigma \models \alpha$$
 
 \end{enumerate}
 
+\newpage
 
+\section{Anexo}
+\subsection{Ejercicio - Inferencia lógica de predicados}
+\[
+    \begin{tabular}{l}
+        Algún estudiante en la sala no estudió para el examen.\\
+        Todos los estudiantes de la sala pasaron el examen.\\ \hline
+        Algún estudiante pasó el examen y no estudió.
+    \end{tabular}
+\]
+¿Cómo modelamos este problema?
+$$S(x) := x \text{ está en la sala}$$
+$$E(x) := x \text{ estudió para el examen}$$
+$$X(x) := x \text{ pasó el examen}$$
+Entonces, la consecuencia lógica quedaría así:
+\[
+    \begin{tabular}{l}
+        $\exists{} x . S(x) \wedge{} \neg{} E(x)$\\
+        $\forall{} x . S(x) \rightarrow{} X(x)$\\ \hline
+        $\exists{} x . X(x) \wedge{} \neg{} E(x)$
+    \end{tabular}
+\]
+¿Cómo inferimos esta consecuencia lógica?
+\begin{enumerate}
+    \item $\exists x . S(x) \wedge \neg E(x)$ (Premisa)
+    \item $S(a) \wedge \neg E(a)$ (Instanciación Existencial 1.)
+    \item $S(a)$ (Simplificación Conjuntiva 2.)
+    \item $\forall x . S(x) \rightarrow X(x)$ (Premisa)
+    \item $S(a) \rightarrow X(a)$ (Instanciación Universal 4.)
+    \item $X(a)$ (Modus ponens 3. y 5.)
+    \item $\neg E(a)$ (Simplificación Conjuntiva 2.)
+    \item $X(a) \wedge \neg E(a)$ (Conjunción 6. y 7.)
+    \item $\exists x . X(x) \wedge \neg E(x)$ (Generalización Existencial 8.)
+\end{enumerate}
 
 \end{document}
