@@ -1,0 +1,344 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Lógica de Predicados}
+Hasta ahora, se ha trabajado unicamente con Lógica Proposicional. Esta funciona bien, pero tiene algunas limitaciones que vuelven imposible modelar algunas situaciones.
+\begin{itemize}
+    \item No tiene objetos. Solo se pueden usar proposiciones.
+    \item No tiene predicados.
+    \item No tiene cuantificadores.
+\end{itemize}
+
+\subsection{¿Y qué tiene la Lógica de Predicados?}
+La lógica de predicados es una parte de la lógica de primer orden. La lógica de predicados nos va a permitir expresar ciertas estructuras las cuales no eramos capaces de expresar usando la lógica proposicional.
+
+\subsection{Predicados}
+Un predicado consiste en una proposicion abierta. El valor de verdad de un predicado dependerá del valor usado en la valuación. Generalmente, estos se simbolizan usando letras mayúsculas (Ej.: $P(x)$)\\
+Ejemplos de predicados:
+\begin{itemize}
+    \item $P(x)$ := x es par
+    \item $R(x)$ := x es primo
+    \item $M(x)$ := x es mortal
+\end{itemize}
+
+\subsubsection{Predicados n-arios}
+Los predicados n-arios consisten en predicados los cuales usan más de una variable para verificar su valor de verdad.\\
+Ejemplo: $O(x,y) := x \leq y $. Si $x = 2$ e $y = 3$, entonces $O(2,3) = 1$
+
+\subsubsection{Dominio de predicado}
+Todo predicado está restringido a un cierto dominio de evaluación. Esto significa que sus valores de verdad solo se pueden evaluar cuando las variables que se usan en el predicado estan dentro del dominio designado.
+Ej.: $O(x,y) := x \leq{} y$ sobre $\mathds{N}$
+
+\subsubsection{Predicado 0-ario / Predicado degenerado}
+Corresponde a un predicado que no tiene ninguna variable libre. Tiene un valor de verdad el cual es totalmente independiente de su valuación.
+
+\subsubsection{Predicados compuestos}
+Un predicado compuesto corresponde a la combinación de diversos predicados básicos, usando distintos operadores para mezclarlos en la sentencia, o la cuantificación universal o existencial de algun predicado (Véase \hyperref[sec:cuantificadores]{sección 9.3}). Todos los predicados deben tener el mismo dominio.
+
+\subsection{Cuantificadores}
+\label{sec:cuantificadores}
+\subsubsection{Cuantificador Universal}
+Consideremos $P(x, y_{1}, \ldots{}, y_{n})$ un predicado compuesto de dominio \textit{D}.\\
+El cuantificador universal corresponde a
+$$P'(y_{1}, \ldots{}, y_{n}) := \forall{} x . P(x, y_{1}, \ldots{}, y_{n})$$
+donde $x$ es la variable cuantificada e $y_{1}, \ldots{}, y_{n}$ son las variables libres.\\
+Si para cierta valuación se cumple que $P'(\ldots{}) = 1$ significa que para toda variable libre se cumple lo especificado anteriormente.\\
+\textbf{Ejemplo}
+$$O(x,y) := x \leq y \text{ sobre } \mathds{N}$$
+$$O'(y) := \forall x . O(x,y)$$
+$$O'(2) = \forall x. O(x,2) = 0$$
+Podemos notar que para $y = 2$, no se cumple para todo valor de $x$ lo dictado en el predicado $O(x,y)$
+$$O''(x) := \forall y . O(x,y)$$
+$$O''(0) := \forall y . O(0,y) = 1$$
+Si $x = 0$, debido a que estamos considerando a los naturales, entonces para todo valor de $y$ se cumple siempre el predicado.
+
+\subsubsection{Cuantificador Existencial}
+Consideremos $P(x, y_{1}, \ldots{}, y_{n})$ un predicado compuesto de dominio \textit{D}.\\
+El cuantificador existencial corresponde a
+$$P'(y_{1}, \ldots{}, y_{n}) := \exists x . P(x, y_{1}, \ldots{}, y_{n})$$
+donde $x$ es la variable cuantificada e $y_{1}, \ldots{}, y_{n}$ son las variables libres.\\
+Si para cierta valuación se cumple que $P'(\ldots{}) = 1$ significa que para alguna combinación de variables libres se cumple lo especificado anteriormente.\\
+\textbf{Ejemplo}
+$$O(x,y) := x \leq y \text{ sobre } \mathds{N}$$
+$$O'(y) := \exists x . O(x,y)$$
+$$O'(2) = \exists x. O(x,2) = 1$$
+
+\subsection{Interpretaciones}
+En algunos casos, puede ocurrir que algún predicado o formula, dependiendo de ciertas condiciones, sea verdadero(a)
+o falso(a). Debido a esto, vamos a definir las \textit{interpretaciones}.\\
+Para comenzar, es importante destacar que desde ahora diremos que $P(x_{1}, \ldots, x_{n})$ es un símbolo de predicado.\\
+Una interpretación $\mathcal{I}$ para símbolo de predicado $P_{1}, \ldots, P_{m}$ se compone de
+\begin{itemize}
+    \item Un dominio $\mathcal{I}(\text{dom})$
+    \item Para cada símbolo $P_{i}$, un predicado $\mathcal{I}(P_{i})$
+\end{itemize}
+Sea $\alpha{}(x_{1}, \ldots, x_{n})$ una formula y $\mathcal{I}$ una interpretación de los símbolos en $\alpha$. Se dice que la interpretación $\mathcal{I}$ satisface $\alpha$ sobre $a_{1}, \ldots, a_{n}$ en $\mathcal{I}(\text{dom})$, expresado como
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+si $\alpha{}(a_{1}, \ldots, a_{n})$ es verdadero al evaluar cada símbolo en $\alpha$ según $\mathcal{I}$. En el caso que $\mathcal{I}$ no logre satisfacer a $\alpha$, se anotará como
+$$\mathcal{I} \not\models \alpha{}(a_{1}, \ldots, a_{n})$$
+\textbf{Ejemplo}
+$$\mathcal{I}_{1}(\text{dom}) := \mathds{N}$$
+$$\mathcal{I}_{1}(P) := \text{x es par}$$
+$$\mathcal{I}_{1}(O) := x < y$$
+$$\alpha{}(x) := \exists y . P(y) \wedge O(x,y)$$
+$$\mathcal{I}_{1} \models \alpha{}(1) := \exists y. \text{y es par} \wedge 1 < y$$
+
+\section{Equivalencia lógica en Lógica de Predicados}
+Se tiene $\alpha{}(x_{1}, \ldots, x_{n})$ y $\beta{}(x_{1}, \ldots, x_{n})$ dos oraciones en lógica de predicados (no tienen variables libres). $\alpha$ y $\beta$ serán logicamente equivalentes, escrito como:
+$$\alpha \equiv \beta$$
+si para toda interpretación $\mathcal{I}$ y para todo $a_{1}, \ldots, a_{n}$ se cumple que:
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n}) \text{ si, y solo si, } \mathcal{I} \models \beta{}(a_{1}, \ldots, a_{n})$$
+En otras palabras, funciona practicamente igual a la \hyperref[sec:equiv_logica]{equivalencia lógica en lógica 
+proposicional}.
+
+\subsection{Equivalencias lógicas}
+Todas las \hyperref[sec:equiv_logica_util]{equivalencias de lógica proposicional} aplican aquí. Simplemente se tienen que cambiar las variables proposicionales por predicados de lógica de predicados. Aquí se muestra un ejemplo:\\
+\textbf{Conmutatividad} (para operador $\wedge$)
+\[    
+    \begin{tabular}{|c|c|}
+        \hline
+        En lógica proposicional & En lógica de predicados\\ \hline
+        $p \wedge{} q \equiv{} q \wedge{} p$ & $\alpha{} \wedge{} \beta{} \equiv{} \beta{} \wedge{} \alpha{}$ \\ \hline
+    \end{tabular}
+\]
+Ahora, además de estas equivalencias, nos encontraremos con algunas nuevas
+\begin{enumerate}
+    \item $\neg \forall x . \alpha \equiv \exists x . \neg \alpha$
+    \item $\neg \exists x . \alpha \equiv \forall x . \neg \alpha$
+    \item $\forall x . (\alpha \wedge \beta) \equiv (\forall x . \alpha) \wedge (\forall x . \beta)$
+    \item $\forall x . (\alpha \vee \beta) \equiv (\forall x . \alpha) \vee (\forall x . \beta)$
+\end{enumerate}
+
+\section{Tautología en Lógica de Predicados}
+Sea $\alpha{}(x_{1}, \ldots, x_{n})$ una fórmula con variables libres $(x_{1}, \ldots, x_{n})$. $\alpha$ es tautología si para toda interpretación $\mathcal{I}$ y para todo $(a_{1}, \ldots, a_{n})$ en $\mathcal{I}(\text{dom})$ se tiene que:
+$$\mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+
+\section{Consecuencia lógica en Lógica de Predicados}
+Una oración de lógica de predicados $\alpha$ es consecuencia lógica de un conjunto de oraciones $\Sigma$ si para toda interpretación $\mathcal{I}$ y para todo $(a_{1}, \ldots, a_{n})$ en $\mathcal{I}(\text{dom})$ se cumple que
+$$\text{si } \mathcal{I} \models \Sigma{}(a_{1}, \ldots, a_{n}) \text{ entonces } \mathcal{I} \models \alpha{}(a_{1}, \ldots, a_{n})$$
+Si $\alpha$ es consecuencia lógica de $\Sigma$, entonces se denota como
+$$\Sigma \models \alpha$$
+
+\section{Inferencia en Lógica de Predicados}
+\begin{enumerate}
+    \item \textbf{Instanciación Universal}
+    \[
+        \begin{tabular}{c}
+        $\forall{} x . \alpha{} (x)$ \\ \hline
+        $\alpha{} (a)$ para cualquier a
+        \end{tabular}
+    \]
+    \item \textbf{Generalización Universal}
+    \[
+        \begin{tabular}{c}
+            $\alpha{} (a)$ para cualquier a \\ \hline
+            $\forall{} x . \alpha{} (x)$
+        \end{tabular}
+    \]
+    \item \textbf{Instanciación Existencial}
+    \[
+        \begin{tabular}{c}
+        $\exists{} x . \alpha{} (x)$ \\ \hline
+        $\alpha{} (a)$ para algún a (nuevo)
+        \end{tabular}
+    \]
+    \item \textbf{Generalización Existencial}
+    \[
+        \begin{tabular}{c}
+        $\alpha{} (a)$ para algún a\\ \hline
+        $\exists{} x . \alpha{} (x)$
+        \end{tabular}
+    \]
+
+\end{enumerate}
+
+
+\section{Demostraciones}
+\subsection{Afirmación matemática}
+Una afirmación matemática consiste en una proposición en lógica de predicados
+\subsubsection*{Tipos de afirmaciones matemáticas}
+\begin{itemize}
+    \item Teorema: Afirmación matemática verdadera y demostrable.
+    \item Proposición: Similar a un Teorema, pero de menor importancia.
+    \item Definición: Sentencia usada para explicar la naturaleza de algún objeto matemático.
+    \item Axioma: Suposición que se considera cierta, y se usa como base para demostrar algo.
+    \item Lema: Proposición demostrada, usada como herramienta para demostrar un teorema.
+    \item Corolario: Teorema que se deduce de un axioma
+    \item Conjetura: Afirmación que es intuitivamente correcta, pero que no ha sido demostrada.
+    \item Problema: Conjetura, que podría ser verdadera o falsa. No se sabe su valor de verdad.
+\end{itemize}
+
+\subsection{¿Qué es una demostración?}
+Una demostración es un argumento válido que permite establecer la verdad de una afirmación matemática.\\
+Con argumento válido, nos referimos a una secuencia de argumentos que puede estar compuesta por
+\begin{itemize}
+    \item Axiomas.
+    \item Hipótesis o supuestos.
+    \item Afirmaciones implicadas por argumentos previos.
+\end{itemize}
+
+Cada argumento en la secuencia lógica de argumentos está conectado con el anterior por una \textit{regla de inferencia} (consecuencia lógica).\\
+El último paso de la secuencia establece la verdad de la afirmación.
+
+\subsubsection*{¿Qué NO es una demostración?}
+\begin{itemize}
+    \item Una secuencia de símbolos.
+    \item Una secuencia disconexa o imprecisa de argumentos.
+\end{itemize}
+Al final, la secuencia de argumentos debe ser lo más clara, precisa y completa posible, para así, convencer al lector u oyente, sin dar lugar a dudas acerca de la veracidad de la demostración.
+
+\subsection{¿Cómo puedo encontrar una secuencia de argumentos?}
+Si lo que se desea es encontrar una secuencia de argumentos que logre demostrar un teorema se requiere de las siguientes cosas
+\begin{itemize}
+    \item \textit{Experiencia}: La práctica hace al maestro.
+    \item \textit{Intuición}: Coloquialmente conocida como \textit{La cachativa}
+    \item \textit{Creatividad}: Pensar fuera de la caja
+    \item \textit{Perseverancia}: If at first you don't succeed, try, try again.
+    \item \textbf{Métodos de demostración}
+\end{itemize}
+
+\section{Métodos de demostración}
+\subsection{Demostración Directa}
+Si se desea demostrar
+\[ \forall x . P(x) \rightarrow Q(x) \]
+entonces se supone que $P(n)$ es verdadero para un $n$ cualquiera, y demostramos que $Q(n)$ es verdadero.
+\subsubsection*{Ejemplo}
+\label{sec:nimpar}
+\begin{itemize}
+    \item Un entero n en $\mathds{Z}$ se dice \textbf{par} si existe $k$ en $\mathds{Z}$ tal que $n = 2k$.
+    \item Un entero n en $\mathds{Z}$ se dice \textbf{impar} si existe $k$ en $\mathds{Z}$ tal que $n = 2k + 1$.
+\end{itemize}
+\textbf{Teorema:} Para todo $n \in \mathds{Z}$, si $n$ es impar, entonces $n^2$ es impar.\\
+Para realizar la demostración, primero suponemos que $n$ es impar. Por definición, existe un $n \in \mathds{Z}$ tal que $n = 2k + 1$.
+\[
+    \begin{tabular}{rcl}
+        $n^2$ & $=$ & $(2k + 1)^2$\\
+        $n^2$ & $=$ & $4k^{2} + 4k + 1$\\
+        $n^2$ & $=$ & $2 \cdot{} (2k^{2} + 2k) + 1$\\
+    \end{tabular}
+\]
+Al definir $k' = 2k^2 + 2k$, entonces $n^2 = 2k' + 1$. Esto corresponde a la definición de un número impar, por lo que $n^2$ es impar.
+
+\subsection{Demostración por Contrapositivo}
+Si se desea demostrar
+\[ \forall x . P(x) \rightarrow Q(x) \equiv \forall x. \neg Q(x) \rightarrow \neg P(x) \]
+entonces se supone que $Q(n)$ es falso para un $n$ cualquiera, y demostramos que $P(n)$ es falso también.
+\subsubsection*{Ejemplo}
+\textbf{Teorema:} Suponga $a$ y $b$ son positivos. Si $n = ab$, entonces $a \leq \sqrt{n}$ o $b \leq \sqrt{n}$.\\
+Para realizar la demostración por contrapositivo, debemos considerar que si $a > \sqrt{n}$ y $b > \sqrt{n}$, entonces $n \not= ab$, considerando la información entregada en el enunciado. Supongamos que $a > \sqrt{n}$ y $b > \sqrt{n}$ con $n$ positivo.\\
+\[
+    \begin{tabular}{rcll}
+        $n$ & $=$ & $\sqrt{n} \cdot \sqrt{n}$\\
+        $n$ & $<$ & $a \cdot \sqrt{n}$ & (por $a > \sqrt{n}$)\\
+        $n$ & $<$ & $a \cdot b$ & (por $b > \sqrt{n}$)\\
+    \end{tabular}
+\]
+Tenemos que $n < ab$, lo que automáticamente significa que $n \not= ab$.
+
+\subsection{Demostración por Contradicción}
+Si se desea demostrar
+\[ (\neg R) \rightarrow (S \wedge \neg S) \]
+entonces se supone que $\neg R$ es verdadero e inferimos una contradicción. En este caso, $R$ debe ser verdadero.\\
+Otro caso podría ser que se quiera demostrar
+\[ R := \forall x . P(x) \rightarrow Q(x) \]
+Entonces, para realizar la demostración, consideramos la negación de la expresión anterior:
+\[ \neg R := \exists x . P(x) \wedge \neg Q(x) \]
+y suponemos que existe un $n$ tal que $P(n)$ es verdadero y $Q(n)$ es falso, e inferimos una contradicción.
+\subsubsection*{Ejemplo}
+\begin{itemize}
+    \item Un número $r$ en $\mathds{R}$ se dice racional si existen enteros $p$ y $q$ tales que: \[ r = \frac{p}{q} \]con $q \not= 0$ y $p, q$ no tienen divisores en común, exceptuando al $1$.
+    \item Un número $r$ en $\mathds{R}$ se dice irracional si no es racional.
+\end{itemize}
+\textbf{Teorema:} $\sqrt{2}$ es irracional.\\
+Para comenzar la demostración, se supone que $\sqrt{2}$ es racional. Entonces, existen $p$ y $q$ que pertenecen a $\mathds{Z}$, sin divisores en común, tal que $\sqrt{2} = \frac{p}{q}$.
+\[
+    \begin{tabular}{rcl}
+        $\sqrt{2}$ & $=$ & $\frac{p}{q}$\\
+        $2 \cdot q^2$ & $=$ & $p^2$\\
+        
+    \end{tabular}
+\]
+Entonces, $p^2$ es par, por lo que $p$ es par (debido a una propiedad existente en los numeros pares).\\
+Como $p$ es par, entonces $p = 2k$ para algún $k$ en $\mathds{Z}$.
+\[
+    \begin{tabular}{rcl}
+        $2 \cdot q^2$ & $=$ & $p^2$\\
+        $2 \cdot q^2$ & $=$ & $(2k)^2$\\
+        $q^2$ & $=$ & $k^2$\\
+    \end{tabular}
+\]
+Entonces, $q^2$ es par, por lo que $q$ es par también.\\
+¡Esto es una contradicción! Se supone que si es irracional, $p$ y $q$ no pueden tener divisores comunes, y al ser pares, tienen como común divisor al $2$. Como no es racional, significa que es irracional, y así, \textit{Q.E.D.}
+
+\subsection{Demostración por Análisis de Casos}
+Si se desea demostrar
+\[ \forall x \in D . P(x) \]
+entonces se va a dividir el dominio de posibilidades $D$ en una cantidad finita de casos $D_{1}, D_{2}, \ldots, D_{k}$, de forma que
+\[ D = D_{1} \cup D_{2} \cup \ldots \cup D_{k} \]
+Por ultimo, se demuestra que para todo subdominio $D_{i}$ se cumple que
+\[ \forall x \in D_{i} . P(x) \]
+con $i$ desde $1$ hasta $k$.
+
+\subsubsection*{Ejemplo}
+\textbf{Teorema:} Para todo entero $n$ se cumple que $n^2 \geq n$.\\
+Para realizar la demostración, consideremos que
+\begin{itemize}
+    \item Si $n = 0$, entonces $0^2 = 0$. Por lo tanto, $0^2 \geq 0$
+    \item Si $n \geq 1$, entonces:
+    \[
+        \begin{tabular}{rcll}
+            $n$ & $\geq$ & $1$\\
+            $n^2$ & $\geq$ & $n$ & (multiplicando ambos lados por $n \geq 0$)\\
+        \end{tabular}
+    \]
+    \item Si $n \leq -1$, como $n^2 \geq 0$, por lo que se tiene que $n^2 \geq n$
+\end{itemize}
+
+\textbf{Recomendación:} \textit{Cuando todos los métodos anteriores han fallado y no se sabe por donde empezar, una 'estrategia' es empezar demostrando los casos simples para así ganar intuición en la demostración general.}
+    
+
+\subsection{Demostración de Doble Implicación}
+Si se desea demostrar
+\[ \forall x . (P(x) \leftrightarrow Q(x)) \]
+entonces se deben demostrar dos afirmaciones
+\[ \forall x . (P(x) \rightarrow Q(x)) \wedge \forall x . (P(x) \leftarrow Q(x)) \]
+\subsubsection*{Ejemplo}
+\textbf{Teorema:} Para todo numero natural $n$, se tiene que $n$ es impar si, y solo si, $n^2$ es impar.\\
+Entonces, para demostrar debemos
+\begin{itemize}
+    \item ($\rightarrow$) Si $n$ es impar, entonces $n^2$ es impar. Esta demostración se realizó \hyperref[sec:nimpar]{aquí}.
+    \item ($\leftarrow$) Si $n^2$ es impar, entonces $n$ es impar.\\
+    Mediante contrapositivo, si $n^2$ no es impar, entonces $n$ tampoco es impar. El no ser impar significa ser par. Por lo tanto, podemos demostrar la afirmación $n$ es par, entonces $n^2$ es par. Trivialmente, esto es algo que ya sabemos (en una prueba, deberías demostrarlo igual). De esta forma, queda demostrado que si $n^2$ es impar, entonces $n$ es impar.
+\end{itemize}
+Como hemos demostrado que la teoría se cumple para ambos lados, Q.E.D.
+
+\subsection{Demostración por contra-ejemplo}
+Si se desea demostrar
+\[ \forall x . P(x) \]
+entonces se debe encontrar un elemento $n$ cualquiera tal que $P(n)$ es falso.
+\subsubsection*{Ejemplo}
+\textbf{Teorema:} Es falso que todo número mayor a 1 es la suma de dos cuadrados perfectos.\\
+Para demostrar, probamos con los dos primeros números mayores que 1
+\[
+    \begin{tabular}{rcl}
+        $2$ & $=$ & $1^2 + 1^2$\\
+        $3$ & $\not=$ & $1^2 + 1^2$\\
+        $3$ & $\not=$ & $2^2 + 1^2$\\
+    \end{tabular}
+\]
+Nos damos cuenta de inmediato que para el 3 esto ya no se cumple.
+
+\subsection{Demostración Existencial}
+Si se desea demostrar
+\[ \forall x . P(x) \rightarrow Q(x) \]
+entonces se supone que $P(n)$ es verdadero para un $n$ cualquiera, y demostramos que $Q(n)$ es verdadero.
+\subsubsection*{Ejemplo}
+
+\subsection{Demostración por Inducción}
+Si se desea demostrar
+\[ \forall x . P(x) \rightarrow Q(x) \]
+entonces se supone que $P(n)$ es verdadero para un $n$ cualquiera, y demostramos que $Q(n)$ es verdadero.
+\subsubsection*{Ejemplo}
+
+\end{document}
