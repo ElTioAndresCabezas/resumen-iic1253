@@ -14,7 +14,7 @@ El ordenamiento de los archivos es el siguiente
 - `anexo.tex`: Corresponde a todo el contenido presente en el anexo final del resumen.
 
 ## Como compilar el LaTeX
-Para compilar `main.tex`, se puede usar <a href="www.overleaf.com">Overleaf</a>, simplemente descargando el proyecto completo (sea como un `.zip` o haciendo `git clone`).
+Para compilar `main.tex`, se puede usar [Overleaf](https://www.overleaf.com), simplemente descargando el proyecto completo (sea como un `.zip` o haciendo `git clone`).
 Oficialmente, al momento de compilar el proyecto, se ha usado MiKTeX y la extensión LaTeX Workshop para Visual Studio Code (en el caso de obtener una versión de Release o de un commit realizado por @ElTioAndresCabezas), u Overleaf (al recibir una versión compilada por @SebaPob).
 
 ## Como realizar un aporte
