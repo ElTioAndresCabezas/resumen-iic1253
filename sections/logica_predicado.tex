@@ -254,7 +254,7 @@ y suponemos que existe un $n$ tal que $P(n)$ es verdadero y $Q(n)$ es falso, e i
 Para comenzar la demostración, se supone que $\sqrt{2}$ es racional. Entonces, existen $p$ y $q$ que pertenecen a $\mathds{Z}$, sin divisores en común, tal que $\sqrt{2} = \frac{p}{q}$.
 \[
     \begin{tabular}{rcl}
-        $\sqrt{2}$ & $=$ & $\frac{p}{q}$\\
+        $\sqrt{2}$ & $=$ & $\cfrac{p}{q}$\\
         $2 \cdot q^2$ & $=$ & $p^2$\\
         
     \end{tabular}
@@ -327,18 +327,51 @@ Para demostrar, probamos con los dos primeros números mayores que 1
         $3$ & $\not=$ & $2^2 + 1^2$\\
     \end{tabular}
 \]
-Nos damos cuenta de inmediato que para el 3 esto ya no se cumple.
+Nos damos cuenta de inmediato que para el 3 esto ya no se cumple. Así, se logra demostrar correctamente que la afirmación es falsa.
 
 \subsection{Demostración Existencial}
 Si se desea demostrar
-\[ \forall x . P(x) \rightarrow Q(x) \]
-entonces se supone que $P(n)$ es verdadero para un $n$ cualquiera, y demostramos que $Q(n)$ es verdadero.
+\[ \exists x . P(x) \]
+entonces se debe demostrar que existe un elemento $n$ tal que $P(n)$ es verdadero. No es estrictamente necesario mostrar $n$ de forma explícita.
 \subsubsection*{Ejemplo}
+\textbf{Teorema:} Existen dos números irracionales $a$ y $b$ tal que $a^b$ es racional.\\
+Consideremos $\sqrt{2}$, ya que este es un numero irracional. Entonces, $a = \sqrt{2}$, $b = \sqrt{2}$ y $a^b = \sqrt{2}^{\sqrt{2}}$. Nosotros no sabemos que es lo que ocurre con $\sqrt{2}^{\sqrt{2}}$, asi que pongamonos en los casos posibles.
+\begin{itemize}
+    \item Si $\sqrt{2}^{\sqrt{2}}$ es racional, entonces $a = \sqrt{2}$ y $b = \sqrt{2}$ logra demostrar de forma satisfactoria el teorema.
+    \item Si $\sqrt{2}^{\sqrt{2}}$ es irracional, entonces debemos considerar otro ejemplo. Un ejemplo que podemos analizar y comprobar con facilidad sería $a = \sqrt{2}^{\sqrt{2}}$ y $b = \sqrt{2}$. Entonces\ldots
+    \[
+        \begin{tabular}{rcl}
+            $(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}$ & $=$ & $\sqrt{2}^{\sqrt{2} \cdot{} \sqrt{2}}$\\
+            $(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}$ & $=$ & $\sqrt{2}^{2}$\\
+            $(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}$ & $=$ & $2$
+        \end{tabular}
+    \]
+\end{itemize}
+Asi, logramos comprobar que $a^b$ es racional, y esto demuestra de que al menos existe un valor de $a$ y de $b$ que permiten que el teorema se cumpla.
 
 \subsection{Demostración por Inducción}
-Si se desea demostrar
-\[ \forall x . P(x) \rightarrow Q(x) \]
-entonces se supone que $P(n)$ es verdadero para un $n$ cualquiera, y demostramos que $Q(n)$ es verdadero.
+Supongamos que queremos demostrar que
+\[ \forall x . P(x) \text{ sobre } \mathds{N} \]
+Para una afirmación $P(x)$ sobre los naturales, si $P(x)$ cumple que:
+\begin{itemize}
+    \item $P(0)$ es verdadero. \textit{(Caso base)}
+    \item Si $P(n)$ \textit{(Hipótesis de inducción)} es verdadero, entonces $P(n + 1)$ \textit{(Tesis de inducción)} es verdadero.
+\end{itemize}
+entonces para todo $n$ en los naturales se tiene que $P(n)$ es verdadero.
+
 \subsubsection*{Ejemplo}
+\textbf{Teorema:} La suma de los primeros $n$ números naturales es igual a $\cfrac{n \cdot (n + 1)}{2}$.\\
+Primero, demostremos que se cumple para un caso base. En este caso, usaremos $n = 0$
+\[ \textbf{Caso base } (n = 0) : \quad 0 = \cfrac{0 \cdot (0 + 1)}{2} = 0 \]
+Ahora supongamos que nuestro teorema se cumple para un $n$ cualquiera. Demostremos que se cumple para $n + 1$
+\[
+    \begin{tabular}{rrcl}
+        \textbf{Hipótesis:} & $0 + 1 + \ldots n$ & $=$ & $\cfrac{n \cdot (n + 1)}{2}$ \\
+        \textbf{Inducción:} & $0 + 1 + \ldots n + (n + 1)$ & $=$ & $0 + 1 + \ldots n + (n + 1) \quad$ esto es $\text{[caso n]} + (n + 1)$\\
+        \space & $0 + 1 + \ldots n + (n + 1)$ & $=$ & $\cfrac{n \cdot (n + 1)}{2} + (n + 1)$\\
+        \space & $0 + 1 + \ldots n + (n + 1)$ & $=$ & $\cfrac{(n + 1) \cdot ((n + 1) + 1)}{2}$\\
+    \end{tabular}
+\]
+Podemos notar como la ultima fórmula es igual a la del teorema, pero reemplazando $n$ por $n + 1$. Esto demuestra que la formula si es válida para $n$, entonces si es válida para $n + 1$, demostrando correctamente el teorema.
 
 \end{document}
