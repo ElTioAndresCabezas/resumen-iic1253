@@ -322,7 +322,8 @@ $$\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$$
 A continuación, vamos a mostrar más consecuencias lógicas, sumando a la lista en 7.1
 \begin{enumerate}
     \item Modus ponens: $ \{ p, p \rightarrow{} q \} \models{} q $
-    \item Modus tollens: $\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$
+    \item Modus tollens: $\{ \neg{} q, p \rightarrow q \} \models{} \neg{} p$
+    \item Resolución: $\{ p \vee{} q, \neg{} q \vee{} r \} \models{} p \vee{} r$
     \item Silogismo: $\{ p \rightarrow{} q, q \rightarrow{} r \} \models{} p \rightarrow{} r$
     \item Silogismo disyuntivo: $\{ p \vee{} q, \neg{} p \} \models{} q$
     \item Conjunción: $\{ p, q \} \models{} p \wedge{} q$
