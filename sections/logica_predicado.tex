@@ -124,28 +124,28 @@ $$\Sigma \models \alpha$$
 \begin{enumerate}
     \item \textbf{Instanciación Universal}
     \[
-        \begin{tabular}{c}
+        \begin{tabular}{l}
         $\forall{} x . \alpha{} (x)$ \\ \hline
         $\alpha{} (a)$ para cualquier a
         \end{tabular}
     \]
     \item \textbf{Generalización Universal}
     \[
-        \begin{tabular}{c}
+        \begin{tabular}{l}
             $\alpha{} (a)$ para cualquier a \\ \hline
             $\forall{} x . \alpha{} (x)$
         \end{tabular}
     \]
     \item \textbf{Instanciación Existencial}
     \[
-        \begin{tabular}{c}
+        \begin{tabular}{l}
         $\exists{} x . \alpha{} (x)$ \\ \hline
         $\alpha{} (a)$ para algún a (nuevo)
         \end{tabular}
     \]
     \item \textbf{Generalización Existencial}
     \[
-        \begin{tabular}{c}
+        \begin{tabular}{l}
         $\alpha{} (a)$ para algún a\\ \hline
         $\exists{} x . \alpha{} (x)$
         \end{tabular}
@@ -265,7 +265,7 @@ Como $p$ es par, entonces $p = 2k$ para algún $k$ en $\mathds{Z}$.
     \begin{tabular}{rcl}
         $2 \cdot q^2$ & $=$ & $p^2$\\
         $2 \cdot q^2$ & $=$ & $(2k)^2$\\
-        $q^2$ & $=$ & $k^2$\\
+        $q^2$ & $=$ & $2 \cdot k^2$\\
     \end{tabular}
 \]
 Entonces, $q^2$ es par, por lo que $q$ es par también.\\
@@ -307,7 +307,7 @@ entonces se deben demostrar dos afirmaciones
 \textbf{Teorema:} Para todo numero natural $n$, se tiene que $n$ es impar si, y solo si, $n^2$ es impar.\\
 Entonces, para demostrar debemos
 \begin{itemize}
-    \item ($\rightarrow$) Si $n$ es impar, entonces $n^2$ es impar. Esta demostración se realizó \hyperref[sec:nimpar]{aquí}.
+    \item ($\rightarrow$) Si $n$ es impar, entonces $n^2$ es impar. Esta demostración se realizó previamente en \hyperref[sec:nimpar]{15.1}.
     \item ($\leftarrow$) Si $n^2$ es impar, entonces $n$ es impar.\\
     Mediante contrapositivo, si $n^2$ no es impar, entonces $n$ tampoco es impar. El no ser impar significa ser par. Por lo tanto, podemos demostrar la afirmación $n$ es par, entonces $n^2$ es par. Trivialmente, esto es algo que ya sabemos (en una prueba, deberías demostrarlo igual). De esta forma, queda demostrado que si $n^2$ es impar, entonces $n$ es impar.
 \end{itemize}
