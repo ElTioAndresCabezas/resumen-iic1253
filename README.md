@@ -11,6 +11,7 @@ Se debe compilar el archivo `main.tex` para obtener el archivo final. Todos los 
 El ordenamiento de los archivos es el siguiente
 - `lp.tex`: Corresponde a todos los contenidos vistos para Lógica Proposicional.
 - `logica_predicado.tex`: Corresponde a todos los contenidos vistos para Lógica de Predicados.
+- `conjunto.tex`: Corresponde a todos los contenidos vistos en Teoría de Conjuntos y Relaciones.
 - `anexo.tex`: Corresponde a todo el contenido presente en el anexo final del resumen.
 
 ## Como compilar el LaTeX
