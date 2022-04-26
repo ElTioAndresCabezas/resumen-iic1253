@@ -41,13 +41,13 @@ Existe un conjunto único $\emptyset$, el cual llamamos \textit{conjunto vacío}
     Ejemplo un poco más creativo: \[ P = \{ x | \forall x . x \text{ es par} \} \]
 \end{enumerate}
 
-\subsection{Paradoja de Russell o Paradoja del Barbero (1901)\footnote{Esta sección contiene información extraída del \href{https://es.wikipedia.org/wiki/Paradoja_de_Russell}{siguiente artículo de Wikipedia}.}}
+\subsection{Paradoja de Russell o Paradoja del Barbero (1901)}
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
     \includegraphics[width = 0.25\textwidth]{b_russell.png}
     \text{B. Russell (1872 - 1970)}
 \end{wrapfigure}
-Esta es una paradoja enunciada por Bertrand Russell. Para comenzar, se define el siguiente conjunto
+Esta es una paradoja enunciada por Bertrand Russell\footnote{Esta sección contiene información extraída del \href{https://es.wikipedia.org/wiki/Paradoja_de_Russell}{siguiente artículo de Wikipedia}.}. Para comenzar, se define el siguiente conjunto
 \[ S^* = \{ B \  | \  B \not\in B \} \]
 $S^*$ corresponde al ``conjunto de todos los conjuntos que no se contienen a si mismos como miembros''. Ahora, recordemos que por la definición de lo que es un conjunto, esto es equivalente a
 \[ \forall B . B \in S^* \leftrightarrow B \not\in B \]
@@ -160,5 +160,64 @@ Se asumirá el siguiente orden de precedencia entre operadores
     \[ \bigcap \mathcal{S} = \{ x \  | \ \forall A .\  A \in \mathcal{S} \rightarrow x \in A \} = \bigcap_{A \in \mathcal{S}} A = \bigcap_{i = 1}^{k} A_i \]
 \end{itemize}
 
+\subsection{Conjunto Potencia}
+Para un conjunto $A$, el conjunto potencia $\mathcal{P}(A)$ de todos los subconjuntos de $A$ es definido como:
+\[ \mathcal{P}(A) = \{ X \  | \  X \subseteq A \} \]
+En palabras simples, el conjunto potencia de $A$ corresponde al conjunto que contiene a todos los subconjuntos de $A$.\\
+
+\subsection{Cardinalidad de un conjunto}
+La cardinalidad del conjunto corresponde a la cantidad de elementos distintos contenidos en un conjunto
+\[ A = \text{\# de elementos distintos en } A \]
+\textbf{Teorema:}
+\[ A = \{ 1, 2, 3, \ldots, n \} \rightarrow |\mathcal{P}(A)| = 2^n \]
+En otras palabras, la cardinalidad del conjunto potencia de $A$ corresponde a 2 elevado a la cardinalidad del conjunto $A$.
+
+\subsection{Grafos como conjuntos}
+Pero \ldots ¿qué es un grafo?\footnote{Información extraida del siguiente \href{https://es.wikipedia.org/wiki/Grafo}{artículo de Wikipedia}}\\
+Un grafo consiste en un conjunto de objetos llamados vertices y nodos, los cuales se encuentran unidos entre sí.\\
+\textbf{Definición:} Un grafo $G$ sobre el dominio $V$ es un subconjunto $E \subseteq \mathcal{P}(V)$, tal que para todo $e \in E$ se cumple que $|e| = 2$.
+\[
+    \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+        %Nodos
+        \node[roundnode] (a) {a};
+        \node[roundnode] (b) [right=of a] {b};
+        \node[roundnode] (c) [below=of a] {c};
+        \node[roundnode] (d) [right=of c] {d};
+        \node[roundnode] (e) [right=of b] {e};
+        \node[roundnode] (f) [right=of d] {f};
+        \node[roundnode] (g) [above=of e] {g};
+        %Lineas
+        \draw (a.east) -- (b.west);
+        \draw (a.east) -- (d.west);
+        \draw (a.south) -- (c.north);
+        \draw (b.east) -- (e.west);
+        \draw (c.east) -- (d.west);
+        \draw (d.east) -- (e.west);
+        \draw (d.east) -- (f.west);
+        \draw (e.north) -- (g.south);
+        \draw (f.north) -- (e.south);
+        \draw (a.east) -- (g.west);
+    \end{tikzpicture}
+\]
+\[
+    \begin{tabular}{rcl}
+        $V$ & = & \{a, b, c, d, e, f, g\}\\
+        $E$ & = & \{ \{a,b\}, \{a,c\}, \{a,d\}, \{a,g\}, \{b,e\}, \{c,d\}, \{d,e\}, \{d,f\}, \{e,f\}, \{e,g\} \}\\
+    \end{tabular}
+\]
+En un grafo, los elementos que están presentes en $V$ los llamamos \textit{vértices o nodos}, y los elementos en $E$ los llamamos \textit{aristas}.
+
+\subsection{Pares Ordenados}
+Para dos elementos $a$ y $b$ se define el par ordenado $(a,b)$ como
+\[ (a,b) = \{ \{ a \}, \{ a,b \} \} \]
+De forma mas informal, decimos que $(a,b)$ es un par ordenado si es que el primer elemento ($a$) se distingue del segundo elemento ($b$). Por esto, tenemos que $(a,b) \not= (b,a)$.\\
+\textbf{Generalización:} Se define una \textit{n-tupla ordenada} como
+\[ (a_1, a_2, \ldots, a_n) = ((a_1, a_2, \ldots, a_{n-1}), a_n) \]
+
+\subsection{Producto Cartesiano}
+Sea $A$ y $B$ conjuntos. El producto cartesiano se define como
+\[ A \times B = \{ (a,b) \  | \  a \in A \wedge b \in B \} \]
+Si tenemos $n$ conjuntos $A_1, A_2, \ldots, A_n$, el producto cartesiano generalizado es
+\[ A_1 \times A_2 \times \ldots \times A_n = \{ (a_1, \ldots, a_n) \  | \ a_i \in A_i \} \]
 
 \end{document}
