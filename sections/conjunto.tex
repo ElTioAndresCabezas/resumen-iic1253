@@ -187,16 +187,16 @@ Un grafo consiste en un conjunto de objetos llamados vertices y nodos, los cuale
         \node[roundnode] (f) [right=of d] {f};
         \node[roundnode] (g) [above=of e] {g};
         %Lineas
-        \draw (a.east) -- (b.west);
-        \draw (a.east) -- (d.west);
-        \draw (a.south) -- (c.north);
-        \draw (b.east) -- (e.west);
-        \draw (c.east) -- (d.west);
-        \draw (d.east) -- (e.west);
-        \draw (d.east) -- (f.west);
-        \draw (e.north) -- (g.south);
-        \draw (f.north) -- (e.south);
-        \draw (a.east) -- (g.west);
+        \draw (a) -- (b);
+        \draw (a) -- (d);
+        \draw (a) -- (c);
+        \draw (b) -- (e);
+        \draw (c) -- (d);
+        \draw (d) -- (e);
+        \draw (d) -- (f);
+        \draw (e) -- (g);
+        \draw (f) -- (e);
+        \draw (a) -- (g);
     \end{tikzpicture}
 \]
 \[
@@ -219,5 +219,192 @@ Sea $A$ y $B$ conjuntos. El producto cartesiano se define como
 \[ A \times B = \{ (a,b) \  | \  a \in A \wedge b \in B \} \]
 Si tenemos $n$ conjuntos $A_1, A_2, \ldots, A_n$, el producto cartesiano generalizado es
 \[ A_1 \times A_2 \times \ldots \times A_n = \{ (a_1, \ldots, a_n) \  | \ a_i \in A_i \} \]
+
+\section{Relaciones}
+Considerando un conjunto $A$ y $B$, $R$ es una relación binaria sobre $A$ y $B$ si se cumple que
+\[ R \subseteq A \times B \]
+Es posible que $B = A$, entonces se dice que $R$ es una relación binaria sobre $A$
+\[ R \subseteq A \times A \]
+\textbf{Notación:} Para una relación $R$ y un par $(a,b)$, se usará la siguiente notación\\
+\[
+    \left.
+        \begin{array}{c}
+            (a,b) \in R \\
+            \text{o} \\
+            a \ R \ b
+        \end{array}
+    \right	
+        \} \quad (a, b) \text{ pertenece a la relación } R
+\]
+
+\declareslashed{}{/}{0.05}{0}{R}
+
+\[
+    \left.
+        \begin{array}{c}
+            (a,b) \not\in R \\
+            \text{o}\\
+            a \ \slashed{R} \ b
+        \end{array}
+    \right
+        \} \quad (a,b) \text{ no pertenece a la relación } R
+\]
+
+\subsection{Representación de Relaciones}
+\subsubsection{Grafos dirigidos}
+Toda relación binaria $R$ sobre $A$ se puede ver como un grafo dirigido $G_R = (A,R)$\\
+Ejemplo:
+\[ A = \{ a, b, c, d, e \} \quad ; \quad R = \{ (a,b), (b,b), (c,b), (c,d), (d,a), (d,d), (d,e) \} \]
+\[
+    \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+        %Nodos
+        \node[roundnode] (a) {a};
+        \node[roundnode] (b) [right=of a] {b};
+        \node[roundnode] (c) [below=of a] {c};
+        \node[roundnode] (d) [right=of c] {d};
+        \node[roundnode] (e) [right=of d] {e};
+        %Lineas
+        \draw [-stealth] (a) -- (b);
+        \draw [-stealth] (c) -- (b);
+        \draw [-stealth] (c) -- (d);
+        \draw [-stealth] (d) -- (e);
+        \draw [-stealth] (d) -- (a);
+        \draw [-stealth] (b) to[out=30, in=-30, looseness=4] (b);
+
+    \end{tikzpicture}
+\]
+
+\subsubsection{Matrices sobre bits / Representación Matricial}
+Sea $A = \{ a_1, a_2, \ldots, a_n \}$ un conjunto y $R$ una relación binaria sobre $A$. Definimos la matriz $M_R$ que representa a la relación $R$ como
+\[ M_R[i, j] = 
+    \begin{cases}
+        1 & \text{si} \; a_i \ R \ a_j\\
+        0 & \text{si} \;  a_i \ \slashed{R} \ a_j
+    \end{cases} 
+\]
+Ejemplo:
+\[ A = \{ a, b, c, d, e \} \quad ; \quad R = \{ (a,b), (b,b), (c,b), (c,d), (d,a), (d,d), (d,e) \} \]
+\[
+    \left.
+        \begin{bmatrix}
+            0 & 1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 1\\
+            0 & 0 & 0 & 0 & 0\\
+        \end{bmatrix}
+    \right. \hspace{3em}\raisebox{-3em}{
+        \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+            %Nodos
+            \node[roundnode] (a) {a};
+            \node[roundnode] (b) [right=of a] {b};
+            \node[roundnode] (c) [below=of a] {c};
+            \node[roundnode] (d) [right=of c] {d};
+            \node[roundnode] (e) [right=of d] {e};
+            %Lineas
+            \draw [-stealth] (a) -- (b);
+            \draw [-stealth] (c) -- (b);
+            \draw [-stealth] (c) -- (d);
+            \draw [-stealth] (d) -- (e);
+            \draw [-stealth] (d) -- (a);
+            \draw [-stealth] (b) to[out=30, in=-30, looseness=4] (b);
+
+        \end{tikzpicture}}
+\]
+\\
+\textbf{Operaciones sobre matrices:} Dada dos matrices de bits $M$ y $N$ de tamaño $n$, entonces
+\[
+    \begin{tabular}{rcll}
+        $(M \vee N)[i,j]$ & $=$ & $M[i,j] \vee N[i,j]$\\
+        $(M \wedge N)[i,j]$ & $=$ & $M[i,j] \wedge N[i,j]$\\
+        $(\neg M)[i,j]$ & $=$ & $\neg M[i,j]$\\
+        $M[i,j]$ & $\leq$ & $N[i,j]$ & para todo $1 \leq i \leq n$ y $1 \leq j \leq n$ asumiendo que $0 \leq 1$.
+    \end{tabular}
+\]
+
+\subsection{Operaciones entre relaciones}
+Sea $A$ un conjunto y $R \subseteq A \times A$. Se definen las siguientes operaciones
+\begin{itemize}
+    \item Proyección 1: $\pi_1(R)$ son todos los elementos que estan en la primera componente de $R$ (No se consideran los duplicados).
+    \[ \pi_1(R) = \{ x \ | \ \exists y \in A . (x,y) \in R \} \]
+    \item Proyección 2: $\pi_2(R)$ son todos los elementos que están en la segunda componente de $R$ (No se consideran los duplicados).
+    \[ \pi_2(R) = \{ y \ | \ \exists x \in A . (x,y) \in R \} \]
+    \item Inverso: $R^{-1}$ son todos los pares $(x,y)$ de la relación $R$, pero al revés (como $(y,x)$). Más formalmente escrito como:
+    \[ R^{-1} = \{ (x,y) \ | \ (y,x) \in R \} \]
+    \item Composición: $R_1 \circ R_2$ son todos los pares $(x,y)$ que cumplen con que exista un $z$ tal que $(x,z) \in R_1$ y $(z,y) \in R_2$
+    \[ R_1 \circ R_2 = \{(x,y) \  | \  \exists z. (x,z) \in R_1 \wedge (z,y) \in R_2 \} \]
+\end{itemize}
+Debido a que esta parte puede llegar a ser un poco complicada de entender, vamos a mostrar una serie de ejemplos en base al conjunto y relación que tenemos de antes.
+\[ A = \{ a, b, c, d, e \} \quad ; \quad R = \{ (a,b), (b,b), (c,b), (c,d), (d,a), (d,d), (d,e) \} \]
+\[
+    \left.
+        \begin{bmatrix}
+            0 & 1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 1\\
+            0 & 0 & 0 & 0 & 0\\
+        \end{bmatrix}
+    \right. \hspace{3em}\raisebox{-3em}{
+        \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+            %Nodos
+            \node[roundnode] (a) {a};
+            \node[roundnode] (b) [right=of a] {b};
+            \node[roundnode] (c) [below=of a] {c};
+            \node[roundnode] (d) [right=of c] {d};
+            \node[roundnode] (e) [right=of d] {e};
+            %Lineas
+            \draw [-stealth] (a) -- (b);
+            \draw [-stealth] (c) -- (b);
+            \draw [-stealth] (c) -- (d);
+            \draw [-stealth] (d) -- (e);
+            \draw [-stealth] (d) -- (a);
+            \draw [-stealth] (b) to[out=30, in=-30, looseness=4] (b);
+
+        \end{tikzpicture}}
+\]
+\[ \pi_1(R) = \{ a, b, c, d \} \quad ; \quad \pi_2(R) = \{ a, b, d, e \} \]
+\[ R^{-1} = \{ (b,a), (b,b), (b,c), (d,c), (a,d), (d,d), (e,d) \} \]
+\[
+    \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+        %Nodos
+        \node[roundnode] (a) {a};
+        \node[roundnode] (b) [right=of a] {b};
+        \node[roundnode] (c) [below=of a] {c};
+        \node[roundnode] (d) [right=of c] {d};
+        \node[roundnode] (e) [right=of d] {e};
+        %Lineas
+        \draw [stealth-] (a) -- (b);
+        \draw [stealth-] (c) -- (b);
+        \draw [stealth-] (c) -- (d);
+        \draw [stealth-] (d) -- (e);
+        \draw [stealth-] (d) -- (a);
+        \draw [stealth-] (b) to[out=30, in=-30, looseness=4] (b);
+
+    \end{tikzpicture}
+\]
+\[ R \circ R = \{ (a,b), (b,b), (c,b), (c,a), (c,d), (c,e), (d,b), (d,a), (d,d), (d,e) \} \]
+\[
+    \begin{tikzpicture}[roundnode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
+        %Nodos
+        \node[roundnode] (a) {a};
+        \node[roundnode] (b) [right=of a] {b};
+        \node[roundnode] (c) [below=of a] {c};
+        \node[roundnode] (d) [right=of c] {d};
+        \node[roundnode] (e) [right=of d] {e};
+        %Lineas
+        \draw [-stealth] (a) -- (b);
+        \draw [-stealth] (c) -- (b);
+        \draw [-stealth] (c) -- (d);
+        \draw [-stealth] (c) -- (a);
+        \draw [-stealth] (c) to[out=-60, in=-120] (e);
+        \draw [-stealth] (d) -- (e);
+        \draw [-stealth] (d) -- (a);
+        \draw [-stealth] (d) -- (b);
+        \draw [-stealth] (b) to[out=30, in=-30, looseness=4] (b); %(b,b)
+        \draw [-stealth] (d) to[out=-60, in=-120, looseness=4] (d); %(b,b)
+
+    \end{tikzpicture}
+\]
 
 \end{document}
