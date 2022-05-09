@@ -333,6 +333,12 @@ Sea $A$ un conjunto y $R \subseteq A \times A$. Se definen las siguientes operac
     \[ R^{-1} = \{ (x,y) \ | \ (y,x) \in R \} \]
     \item Composición: $R_1 \circ R_2$ son todos los pares $(x,y)$ que cumplen con que exista un $z$ tal que $(x,z) \in R_1$ y $(z,y) \in R_2$
     \[ R_1 \circ R_2 = \{(x,y) \  | \  \exists z. (x,z) \in R_1 \wedge (z,y) \in R_2 \} \]
+    \item Unión: $R_1 \cup R_2$ son todos los pares que existen en $R_1$ o $R_2$. De forma más formal:
+    \[ R_1 \cup R_2 = \{ (x,y) | (x,y) \in R_1 \vee (x,y) \in R_2 \} \]
+    \item Intersección: $R_1 \cap R_2$ son todos los pares que existen en $R_1$ y $R_2$ de forma simultánea. Más formalmente expresado como:
+    \[ R_1 \cap R_2 = \{ (x,y) | (x,y) \in R_1 \wedge (x,y) \in R_2 \} \]
+    \item Relación identidad: $I_A$ solamente contiene a los pares $(x,x)$ para los $x$ que existen en $A$.
+    \[ I_A = \{ (x,x) | x \in A \} \]
 \end{itemize}
 Debido a que esta parte puede llegar a ser un poco complicada de entender, vamos a mostrar una serie de ejemplos en base al conjunto y relación que tenemos de antes.
 \[ A = \{ a, b, c, d, e \} \quad ; \quad R = \{ (a,b), (b,b), (c,b), (c,d), (d,a), (d,d), (d,e) \} \]
@@ -406,5 +412,125 @@ Debido a que esta parte puede llegar a ser un poco complicada de entender, vamos
 
     \end{tikzpicture}
 \]
+
+\subsection{Tipos de Relaciones}
+\begin{itemize}
+    \item Refleja: $\forall a \in A . (a,a) \in R$
+    \item Irrefleja: $\forall a \in A . (a,a) \not\in R$
+    \item Simétrica: $\forall a, b \in A . (a,b) \in R \rightarrow (b,a) \in R$
+    \item Asimétrica: $\forall a, b \in A . (a,b) \in R \rightarrow (b,a) \not\in R$
+    \item Antisimétrica: $\forall a, b \in A . ((a,b) \in R \wedge (b,a) \in R) \rightarrow a = b$
+    \item Transitiva: $\forall a, b, c \in A . ((a,b) \in R \wedge (b,c) \in R) \rightarrow (a,c) \in R$
+    \item Conexa: $\forall a, b \in A . (a,b) \in R \vee (b,a) \in R$
+\end{itemize}
+
+\subsubsection{Tipos de Relaciones caracterizadas con operaciones}
+Se considera un conjunto $A$ y una relación binaria $R \subseteq A \times A$
+\begin{itemize}
+    \item $R$ es refleja si y solo si $I_A \subseteq R$.
+    \item $R$ es irrefleja si y solo si $R \cap I_A = \emptyset$.
+    \item $R$ es simétrica si y solo si $R = R^{-1}$.
+    \item $R$ es asimétrica si y solo si $R \cap R^{-1} = \emptyset$.
+    \item $R$ es antisimétrica si y solo si $R \cap R^{-1} \subseteq I_A$.
+    \item $R$ es transitiva si y solo si $R \circ R \subseteq R$.
+    \item $R$ es conexa si y solo si $R \cup R^{-1} = A \times A$.
+\end{itemize}
+
+\subsection{Ordenes Parciales}
+Si tenemos un conjunto $A$ y una relación $R \subseteq A \times A$, decimos que $R$ es un orden parcial si es que cumple que
+\begin{itemize}
+    \item $R$ es refleja: $I_A \subseteq R$
+    \item $R$ es antisimétrica: $R \cap R^{-1} \subseteq I_A$
+    \item $R$ es transitiva: $R \circ R \subseteq R$
+\end{itemize}
+El orden parcial se denota como $(A, \preceq)$.
+
+\subsubsection{Ordenes Totales}
+Si tenemos un conjunto $A$ y un orden parcial $(A, \preceq)$, se dice que este orden parcial es un orden total si es que se cumple que la relación $R \subseteq A \times A$ es conexa. En otras palabras, un orden total debe cumplir con
+\begin{itemize}
+    \item $R$ es refleja: $I_A \subseteq R$
+    \item $R$ es antisimétrica: $R \cap R^{-1} \subseteq I_A$
+    \item $R$ es transitiva: $R \circ R \subseteq R$
+    \item $R$ es conexa: $R \cup R^{-1} = A \times A$
+\end{itemize}
+
+\subsubsection{Representación de un Orden Parcial}
+\textbf{¿Cómo se ve un orden parcial representado con grafos?}\\
+Consideremos como ejemplo, el orden $\leq$ sobre $\mathds{N}$
+\[
+    \begin{tikzpicture}
+        \node (0) {0};
+        \node (1) [right=of 0] {1};
+        \node (2) [right=of 1] {2};
+        \node (3) [right=of 2] {3};
+        \node (next) [right=of 3] {\ldots};
+
+        %Relacion refleja
+        \draw [-stealth] (0) to[out=-60, in=-120, looseness=4] (0);
+        \draw [-stealth, red] (1) to[out=60, in=120, looseness=4] (1);
+        \draw [-stealth, blue] (2) to[out=60, in=120, looseness=4] (2);
+        \draw [-stealth, green] (3) to[out=60, in=120, looseness=4] (3);
+
+        %Relacion hacia adelante
+        %desde 0
+        \draw [-stealth] (0) -- (1);
+        \draw [-stealth] (0) to[out=-50, in=-130] (2);
+        \draw [-stealth] (0) to[out=-50, in=-130] (3);
+        \draw [-stealth] (0) to[out=-50, in=-130] (next);
+
+        %desde 1
+        \draw [-stealth, red] (1) -- (2);
+        \draw [-stealth, red] (1) to[out=40, in=140] (3);
+        \draw [-stealth, red] (1) to[out=40, in=140] (next);
+
+        %desde 2
+        \draw [-stealth, blue] (2) -- (3);
+        \draw [-stealth, blue] (2) to[out=-30, in=-150] (next);
+
+        %desde 3
+        \draw [-stealth, green] (3) -- (next);
+    \end{tikzpicture}
+\]
+Este grafo queda demasiado enredado. Normalmente, para representar ordenes parciales, se usa el \textbf{Diagrama de Hasse}, el cual consiste en un diagrama de grafos, tal como el anterior, pero omitiendo los loops y las aristas transitivas\footnote{Con esto nos referimos a que se omite $(a,b) \in \preceq$ si es que existe $c$ de forma que $(a,c) \in \preceq$ y $(b,c) \in \preceq$}.\\
+Considerando la descripción anterior, el diagrama de Hasse del orden $\leq$ sobre $\mathds{N}$ se vería así
+\[
+    \begin{tikzpicture}
+        \node (0) {0};
+        \node (1) [right=of 0] {1};
+        \node (2) [right=of 1] {2};
+        \node (3) [right=of 2] {3};
+        \node (next) [right=of 3] {\ldots};
+
+        \draw [-stealth] (0) -- (1);
+        \draw [-stealth] (1) -- (2);
+        \draw [-stealth] (2) -- (3);
+        \draw [-stealth] (3) -- (next);
+    \end{tikzpicture}
+\]
+
+\subsection{Elementos extremos}
+\begin{itemize}
+    \item Cotas superiores: $c \in A$ es una cota superior de $S$ si y solo si $\forall y \in S . y \preceq c$
+    \item Maximales: $\hat{x} \in S$ es un maximal si y solo si $\forall y \in S . \hat{x} \preceq y \rightarrow \hat{x} = y$
+    \item Máximo: $x^{\uparrow} \in S$ es un máximo si y solo si $\forall y \in S . y \preceq x^{\uparrow}$
+    \item Cotas inferiores: $c \in A$ es una cota inferior de $S$ si y solo si $\forall y \in S . c \preceq y$
+    \item Minimales: $\breve{x} \in S$ es un minimal si y solo si $\forall y \in S . y \preceq \breve{x} \rightarrow \breve{x} = y$
+    \item Mínimo: $x^{\downarrow} \in S$ es un máximo si y solo si $\forall y \in S . x^{\downarrow} \preceq y$
+\end{itemize}
+\subsubsection{Sobre minimales y minimos}
+Sea $(a,\preceq)$ un orden parcial y $S \subseteq A$ distinto de $\emptyset$.
+\begin{itemize}
+    \item Si $S$ tiene un elemento mínimo, entonces ¿es único?\\
+    Si. Es único.\footnote{Se puede consultar la demostración en el anexo}
+    \item ¿Tiene $S$ siempre un mínimo?\\
+    No. Es posible tener conjuntos que no tienen mínimos
+    \item Si $x$ es mínimo, entonces ¿es $x$ minimal?\\
+    Si. Un mínimo es siempre minimal también.\footnote{Se puede consultar la demostración en el anexo}
+    \item Si $x$ es minimal, entonces ¿es $x$ es mínimo?\\
+    No necesariamente.
+    \item ¿Tiene $S$ siempre un elemento minimal?\\
+    No necesariamente.
+\end{itemize}
+Con respecto a esto, también es verdadero respecto a maximales y máximos.
 
 \end{document}
