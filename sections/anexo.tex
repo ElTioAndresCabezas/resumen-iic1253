@@ -36,4 +36,38 @@ Entonces, la consecuencia lógica quedaría así:
     \item $\exists x . X(x) \wedge \neg E(x)$ (Generalización Existencial 8.)
 \end{enumerate}
 
+\subsection{Demostración - Mínimo único}
+\label{sec:dem_min_unico}
+\textbf{Si $S$ tiene un elemento mínimo, entonces dicho elemento es único.}\\
+Sea $x_1^{\downarrow} \in S$ y $x_2^{\downarrow} \in S$ ambos mínimos y $x_1 \not= x_2$. ¿Es esto posible?\\
+Mediante la definición de mínimo, llegamos a que
+\[ \forall y \in S . x_1^{\downarrow} \preceq y \quad ; \quad \forall y \in S . x_2^{\downarrow} \preceq y \]
+Esto nos lleva a que
+\[
+    \left.
+        \begin{array}{c}
+            x_1^{\downarrow} \preceq x_2^{\downarrow}\\
+            x_2^{\downarrow} \preceq x_1^{\downarrow}
+        \end{array}
+    \right \}
+    x_1^{\downarrow} = x_2^{\downarrow}
+\]
+Así, queda demostrado que el mínimo debe ser único.
+
+\subsection{Demostración - Si es mínimo, es minimal}
+\label{sec:dem_min_minimal}
+\textbf{Si $x$ es mínimo, entonces x es minimal}\\
+Sea $x^{\downarrow}$ un mínimo\\
+Para realizar la demostración, se debe demostrar que $\forall z \in S . z \preceq x^{\downarrow} \rightarrow z = x$\\
+Suponga que $z \preceq x^{\downarrow}$. Por definición de mínimo, se tiene que $x^{\downarrow} \preceq z$. Entonces, considerando toda la información, se llega a que
+\[
+    \left.
+        \begin{array}{c}
+            z \preceq x^{\downarrow}\\
+            x^{\downarrow} \preceq z
+        \end{array}
+    \right \}
+    z = x^{\downarrow}
+\]
+
 \end{document}
