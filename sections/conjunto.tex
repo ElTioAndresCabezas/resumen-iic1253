@@ -540,6 +540,34 @@ Decimos que $c^*$ es infimo si es una cota inferior de $S$ y de todas las cotas 
 Decimos que $c^*$ es supremo si es una cota superior de $S$ y de todas las cotas superiores de $S$, $c^*$ es la cota superior menor.
 
 \subsection{Clausuras}
+Sea $A$ un conjunto y $R \subseteq A \times A$ una relación
+\subsubsection{Clausura Refleja}
+Una relación $R^{r} \subseteq A \times A$ es la clausura refleja de $R$ si
+\begin{itemize}
+    \item $R \subseteq R^{r}$
+    \item $R^{r}$ es refleja.
+    \item Para toda relación refleja $R'$ con $R \subseteq R'$ se cumple $R^{r} \subseteq R'$.
+\end{itemize}
+$R^{r}$ es la menor relación refleja que contiene a $R$.
 
+\subsubsection{Clausura Transitiva}
+Una relación $R^{} \subseteq A \times A$ es la clausura transitiva de $R$ si
+\begin{itemize}
+    \item $R \subseteq R^{t}$
+    \item $R^{t}$ es transitiva.
+    \item Para toda relación refleja $R'$ con $R \subseteq R'$ se cumple $R^{t} \subseteq R'$.
+\end{itemize}
+$R^{t}$ es la menor relación transitiva que contiene a $R$.
+\subsubsection{Cálculo de clausuras}
+\[ R^{r} = R \cup I_{A} \quad ; \quad R^{t} = \bigcup_{i = 1}^{\infty} R^{i} \]
+donde
+\[
+    \begin{tabular}{r|l}
+        Símbolo & Significa\\ \hline
+        $I_{A}$ & Relación identidad\\
+        $R^{i}$ & $R^{i-1} \circ R$\\
+        $R^{2}$ & $R \circ R$
+    \end{tabular}
+\]
 
 \end{document}

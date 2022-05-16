@@ -11,6 +11,13 @@
 \usepackage{tikz}
 \usepackage{slashed}
 
+\newcommand{\switchdarkmode}[2]{{#2}}
+\switchdarkmode{
+    \pagecolor{black} %black
+    \color{white} %grey
+}{}
+
+
 \usetikzlibrary{positioning}
 
 \graphicspath{{img/}{../img/}}
