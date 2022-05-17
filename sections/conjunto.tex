@@ -605,9 +605,110 @@ En palabras simples, $[x]_\simeq$ corresponde a todos los elementos presentes en
 \subsection{Conjunto cuociente}
 Se tiene $A$ un conjunto y $\simeq \subseteq A \times A$ una relación de equivalencia. El conjunto cuociente de $A$, expresado como $A/\simeq$ significa
 \[ A/\simeq = \{ x \in A \} \]
+El conjunto cuociente de $A$ corresponde a una partición de $A$.
 
+\section{Funciones}
+Las funciones son un tipo de relación. Más especificamente, $f \subseteq A \times B$ (con $A$ y $B$ conjuntos no vacios) es una función si es que
+\begin{itemize}
+    \item $\forall a \in A . \exists b \in B . (a,b) \in f$ o que para todo elemento de $A$ existe un elemento en $B$, tal que $f$ los relacione.
+    \item $\forall a \in A . \forall b_1, b_2 \in B . ((a,b_1) \in f \wedge (a,b_2) \in f) \rightarrow b_1 = b_2$ o que todo elemento de $A$ se relacione con solamente un elemento de $B$.
+\end{itemize}
+De forma más gráfica, una función se vería así
+\[
+    \left.
+        \begin{tikzpicture}
+            \node (A) {$A$};
+            \node (B) [right=of A] {$B$};
+            
+            \node (a1) [below = 0.5cm of A] {$a_1$};
+            \node (a2) [below = 0.5cm of a1] {$a_2$};
+            \node (a3) [below = 0.5cm of a2] {$a_3$};
 
+            \node (b1) [below = 0.5cm of B] {$b_1$};
+            \node (b2) [below = 0.5cm of b1] {$b_2$};
+            \node (b3) [below = 0.5cm of b2] {$b_3$};
 
+            \draw[-stealth] (a1) -- (b1);
+            \draw[-stealth] (a2) -- (b2);
+            \draw[-stealth] (a3) -- (b3);
+        \end{tikzpicture}
+    \right.
+        \hspace{3em}\raisebox{9em}{$f_1: A \rightarrow B$}
+\]
+Por otro lado, estas cosas no serían funciones
+\[
+    \begin{tikzpicture}
+        \node (A) {$A$};
+        \node (B) [right=of A] {$B$};
+        
+        \node (a1) [below = 0.5cm of A] {$a_1$};
+        \node (a2) [below = 0.5cm of a1] {$a_2$};
+        \node (a3) [below = 0.5cm of a2] {$a_3$};
 
+        \node (b1) [below = 0.5cm of B] {$b_1$};
+        \node (b2) [below = 0.5cm of b1] {$b_2$};
+        \node (b3) [below = 0.5cm of b2] {$b_3$};
+
+        \draw[-stealth, red] (a1) -- (b1);
+        \draw[-stealth, red] (a1) -- (b2);
+
+        \draw[-stealth, blue] (a2) -- (b2);
+        \draw[-stealth, blue] (a3) -- (b1);
+    \end{tikzpicture}
+\]
+\color{red}$f_2: A \rightarrow B$: Esto no es función, debido a que un elemento de $A$ se relaciona con más de un elemento de $B$ (Tambien no relaciona todos los elementos de $A$)\\
+\color{blue}$f_3: A \rightarrow B$: Esto no es función, debido a que no todos los elementos de $A$ se relacionan con algún elemento de $B$.\color{black}\\
+Una función siempre se puede ver como tabla, cosa que en la mayoría de casos hace que sea más facil visualizarla y entenderla que los diagramas de antes. Por ejemplo, para la $f_1$ definida antes
+\[
+    \left.
+        \begin{tikzpicture}
+            \node (A) {$A$};
+            \node (B) [right=of A] {$B$};
+            
+            \node (a1) [below = 0.5cm of A] {$a_1$};
+            \node (a2) [below = 0.5cm of a1] {$a_2$};
+            \node (a3) [below = 0.5cm of a2] {$a_3$};
+
+            \node (b1) [below = 0.5cm of B] {$b_1$};
+            \node (b2) [below = 0.5cm of b1] {$b_2$};
+            \node (b3) [below = 0.5cm of b2] {$b_3$};
+
+            \draw[-stealth] (a1) -- (b1);
+            \draw[-stealth] (a2) -- (b2);
+            \draw[-stealth] (a3) -- (b3);
+        \end{tikzpicture}
+    \right. \hspace{3em}\raisebox{5em}{
+        \begin{tabular}{c|c}
+            $A$ & $B$ \\ \hline
+            $a_1$ & $b_1$\\
+            $a_2$ & $b_2$\\
+            $a_3$ & $b_3$\\
+        \end{tabular} 
+    }   
+\]
+
+\subsection{Función parcial}
+Una función parcial es similar a una función, sin embargo, podemos decir que es un poco más ``permisiva'', ya que a diferencia de la función, no exige que todos los elementos de $A$ tengan relación con elementos de $B$.\\
+De manera más formal, $f \subseteq A \times B$ es una función parcial si
+\[ \forall a \in A . \forall b_1, b_2 \in B . ((a,b_1) \in f \wedge (a,b_2) \in f) \rightarrow b_1 = b_2 \]
+Un ejemplo sencillo de una función parcial que no es función
+\[
+    \begin{tikzpicture}
+        \node (A) {$A$};
+        \node (B) [right=of A] {$B$};
+        
+        \node (a1) [below = 0.5cm of A] {$a_1$};
+        \node (a2) [below = 0.5cm of a1] {$a_2$};
+        \node (a3) [below = 0.5cm of a2] {$a_3$};
+
+        \node (b1) [below = 0.5cm of B] {$b_1$};
+        \node (b2) [below = 0.5cm of b1] {$b_2$};
+        \node (b3) [below = 0.5cm of b2] {$b_3$};
+
+        \draw[-stealth] (a1) -- (b1);
+        \draw[-stealth] (a3) -- (b2);
+    \end{tikzpicture}
+\]
+Todo elemento de $A$ que se relaciona con un elemento de $B$, cumple con tener una unica relación, y no varias relaciones, como especificamos anteriormente. Sin embargo, hay un elemento de $A$ que no se relaciona. Por esto, no es función, pero si es una función parcial.
 
 \end{document}
