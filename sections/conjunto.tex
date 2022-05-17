@@ -570,4 +570,44 @@ donde
     \end{tabular}
 \]
 
+\section{Relaciones de Equivalencia}
+Si se tiene que $A$ un conjunto y $R \subseteq A \times A$ una relación binaria, se dice que $R$ es una relación de equivalencia si cumple con ser una relación
+\begin{itemize}
+    \item Refleja: $\forall a \in A . (a,a) \in R$
+    \item Simétrica: $\forall a, b \in A . (a,b) \in R \rightarrow (b,a) \in R$
+    \item Transitiva: $\forall a, b, c \in A . ((a,b) \in R \wedge (b,c) \in R) \rightarrow (a,c) \in R$
+\end{itemize}
+
+\textbf{Ejemplo práctico: Personas y cumpleaños}
+\[ P = \{ p | p \text{ es una persona} \} \]
+\[ C \subseteq P \times P \text{ tal que } (p_1, p_2) \in C \text{ ssi } p_1 \text{ está de cumpleaños el mismo día que } p_2 \]
+
+\subsection{Particiones}
+Sea $A$ un conjunto y $\mathcal{S} \subseteq 2^A$. Se dice que $\mathcal{S}$ es una partición de $A$ si
+\begin{itemize}
+    \item Todos los elementos de $\mathcal{S}$ son distintos de vacío: $\forall X \in \mathcal{S} . X \not= \emptyset$
+    \item La unión de todos los elementos de $\mathcal{S}$ es igual a $A$: $\cup \mathcal{S} = A$
+    \item Todos los elementos de $\mathcal{S}$ son distintos de a pares: $X, Y \in \mathcal{S} . X \not= Y \rightarrow X \cap Y = \emptyset$
+\end{itemize}
+
+\subsection{Clases de equivalencia}
+Sea $A$ un conjunto, $\simeq \subseteq A \times A$ una relación de equivalencia y $x \in A$. La clase de equivalencia de $x$ segun $\simeq$ corresponde a
+\[ [x]_\simeq = \{ y \in A | x \simeq y \} \]
+En palabras simples, $[x]_\simeq$ corresponde a todos los elementos presentes en $A$ que son iguales a $x$.
+
+\subsubsection{Propiedades de las clases de equivalencia}
+\begin{itemize}
+    \item $\forall x \in A . x \in [x]_\simeq$
+    \item $x \simeq z \leftrightarrow [x]_\simeq = [z]_\simeq$
+    \item $x \not\simeq z \rightarrow [x]_\simeq \cap [z]_\simeq = \emptyset$
+\end{itemize}
+
+\subsection{Conjunto cuociente}
+Se tiene $A$ un conjunto y $\simeq \subseteq A \times A$ una relación de equivalencia. El conjunto cuociente de $A$, expresado como $A/\simeq$ significa
+\[ A/\simeq = \{ x \in A \} \]
+
+
+
+
+
 \end{document}
