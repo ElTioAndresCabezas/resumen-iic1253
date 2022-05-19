@@ -465,13 +465,13 @@ Consideremos como ejemplo, el orden $\leq$ sobre $\mathds{N}$
         \node (3) [right=of 2] {3};
         \node (next) [right=of 3] {\ldots};
 
-        %Relacion refleja
+        %relación refleja
         \draw [-stealth] (0) to[out=-60, in=-120, looseness=4] (0);
         \draw [-stealth, red] (1) to[out=60, in=120, looseness=4] (1);
         \draw [-stealth, blue] (2) to[out=60, in=120, looseness=4] (2);
         \draw [-stealth, green] (3) to[out=60, in=120, looseness=4] (3);
 
-        %Relacion hacia adelante
+        %relación hacia adelante
         %desde 0
         \draw [-stealth] (0) -- (1);
         \draw [-stealth] (0) to[out=-50, in=-130] (2);
@@ -770,5 +770,49 @@ Esto nos entrega algunas propiedades interesantes. Si se tiene la función $f: A
 Para las cosas con las que tendremos que lidiar en el curso, el principio del palomar dice que, considerando un $f: A \rightarrow B$ y $|B| < |A|$, entonces $f$ \textbf{NO} es inyectiva.
 \[ \exists a_1, a_2 \in A . a_1 \not= a_2 \wedge f(a_1) = f(a_2) \]
 
+\section{Cardinalidad}
+Primero que nada, debemos recordar que el tamaño de un conjunto es definido como la cantidad de elementos presentes en el conjunto.
+
+\subsection{Equinumerosidad (Conjuntos equinumerosos)}
+Dos conjuntos $A$ y $B$ son equinumerosos si tienen la misma cantidad de elementos. Visto de otra forma, $A$ y $B$ son equinumerosos si es que existe una biyección $f: A \rightarrow B$. Si son equinumerosos, se denota como $|A| = |B|$.
+
+\subsection{Equinumerosidad como Relación de Equivalencia}
+La relación $|\cdot| = |\cdot|$ es una relación de equivalencia. Esto significa que es una relación refleja, simétrica y transitiva.\\
+Entonces, para un conjunto $A$, se denotará su clase de equivalencia como $|A|$, según la relación $|\cdot| = |\cdot|$.
+
+\subsection{Cardinalidad de conjuntos finitos}
+Se dice que un conjunto es finito si es que existe un $n$ tal que $|A| = |\{ 0,1,2,3,\ldots,n-1 \}|$. Cuando esto ocurre, se dice que su cardinalidad es $n$.
+\[ \exists n . |A| = |\{ 0,1,2,3,\ldots,n-1 \}| \rightarrow A \text{ es finito y } |A| = n \]
+
+\subsection{Cardinalidad de conjuntos infinitos}
+Hagamos un analisis de un ejemplo: Supongamos un conjunto $\mathbb{P}$ compuesto por todos los numeros pares
+\[ \mathbb{P} = \{ 0,2,4,6,8,\ldots \} \]
+Este conjunto es infinito. Si lo pensamos, $\mathds{N}$ (el conjunto de los naturales) también es infinito. ¿Tendrán $\mathbb{P}$ y $\mathds{N}$ la misma cardinalidad? Nuestra definición de equinumerosidad nos será util. Hay una biyección entre ambos conjuntos
+\[
+    \begin{tikzpicture}
+        \node (Nat0) {$\mathds{N} =$ \textbraceleft };
+        \node (Nat1) [right= 0.1cm of Nat0] {$0$};
+        \node (Nat2) [right= 0.1cm of Nat1] {$1$};
+        \node (Nat3) [right= 0.1cm of Nat2] {$2$};
+        \node (Nat4) [right= 0.1cm of Nat3] {$3$};
+        \node (Nat5) [right= 0.1cm of Nat4] {$4$};
+        \node (Nat6) [right= 0.1cm of Nat5] {$5$};
+        \node (NatC) [right= 0.1cm of Nat6] {\ldots \textbraceright};
+
+        \node (P0) [below=of Nat0] {$\mathbb{P} =$ \textbraceleft };
+        \node (P1) [right= 0.1cm of P0] {$0$};
+        \node (P2) [right= 0.6cm of P1] {$2$};
+        \node (P3) [right= 0.6cm of P2] {$4$};
+        \node (P4) [right= 0.6cm of P3] {$6$};
+        \node (P5) [right= 0.6cm of P4] {$8$};
+        \node (PC) [right= 0.1cm of P5] {\ldots \textbraceright};
+
+        \draw[-stealth] (Nat1) -- (P1);
+        \draw[-stealth] (Nat2) -- (P2);
+        \draw[-stealth] (Nat3) -- (P3);
+        \draw[-stealth] (Nat4) -- (P4);
+        \draw[-stealth] (Nat5) -- (P5);
+    \end{tikzpicture}
+\]
 
 \end{document}
