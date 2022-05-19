@@ -740,5 +740,13 @@ Asumiendo una función $f: A \rightarrow B$, las funciones se clasifican como:
 \end{itemize}
 
 \subsection{Función inversa y composición}
+Similar a las relaciones, las funciones tienen una forma inversa y se puede componer.
+\begin{itemize}
+    \item Función inversa: $f^{-1}$ son todos los pares $(a,b)$ tal que $(b,a)$ existe en $f$. \[ f^{-1} = \{ (a,b) | (b,a) \in f \} \]
+    \item Composición de funciones: $f_1 \circ f_2$, con $f_1 \rightarrow A \rightarrow B$ y $f_2 \rightarrow B \rightarrow C$, son todos los elementos $(a,b)$ tal que exista un $c$ que permita crear un ``puente'' entre $f_1$ y $f_2$. \[ f_1 \circ f_2 = \{ (a,b) | \exists c \in B . (a,c) \in f_1 \wedge (c,b) \in f_2 \} \]
+    \[ f_2(f_1(a)) = c \]
+\end{itemize}
+
+
 
 \end{document}
