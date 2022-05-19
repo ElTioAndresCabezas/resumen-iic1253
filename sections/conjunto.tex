@@ -746,6 +746,23 @@ Similar a las relaciones, las funciones tienen una forma inversa y se puede comp
     \item Composición de funciones: $f_1 \circ f_2$, con $f_1 \rightarrow A \rightarrow B$ y $f_2 \rightarrow B \rightarrow C$, son todos los elementos $(a,b)$ tal que exista un $c$ que permita crear un ``puente'' entre $f_1$ y $f_2$. \[ f_1 \circ f_2 = \{ (a,b) | \exists c \in B . (a,c) \in f_1 \wedge (c,b) \in f_2 \} \]
     \[ f_2(f_1(a)) = c \]
 \end{itemize}
+Esto nos entrega algunas propiedades interesantes. Si se tiene la función $f: A \rightarrow B$, entonces
+\[
+    \begin{tabular}{rcl}
+        $f$ es inyectiva & si, y solo si, & $f^{-1}$ es una función parcial.\\
+        $f$ es sobreyectiva & si, y solo si, & $\text{img}(f) = B$.\\
+        $f$ es biyectiva & si, y solo si, & $f^{-1}$ es una función.
+    \end{tabular}
+\]
+\[
+    \begin{tabular}{rl}
+        Si $f_1$ y $f_2$ son inyectivas, & entonces $f_1 \circ f_2$ es inyectiva también.\\
+        Si $f_1$ y $f_2$ son sobreyectivas, & entonces $f_1 \circ f_2$ es sobreyectiva también.
+    \end{tabular}
+\]
+
+\subsection{Principio del Palomar}
+
 
 
 
