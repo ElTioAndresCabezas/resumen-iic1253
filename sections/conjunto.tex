@@ -711,4 +711,34 @@ Un ejemplo sencillo de una función parcial que no es función
 \]
 Todo elemento de $A$ que se relaciona con un elemento de $B$, cumple con tener una unica relación, y no varias relaciones, como especificamos anteriormente. Sin embargo, hay un elemento de $A$ que no se relaciona. Por esto, no es función, pero si es una función parcial.
 
+\subsection{Notación}
+Considerando $f \subseteq A \times B$, se usará la siguiente notación
+\[
+    \begin{tabular}{rl}
+        $f: A \rightarrow B$ & para $f$ es una función de $A$ a $B$.\\
+        $f: A \rightharpoonup B$ & para $f$ es una función parcial de $A$ a $B$.\\
+        $f(a) = b$ & para decir que $(a,b) \in f$.
+    \end{tabular}
+\]
+
+\subsection{Dominio e imagen de una función}
+\[
+    \begin{tabular}{rrcccl}
+        Dominio: & $\text{dom}(f)$ & $=$ & $\pi_1(f)$ & = & $\{ a \in A | \exists b \in B . (a,b) \in f \}$\\
+        Imagen: & $\text{img}(f)$ & $=$ & $\pi_2(f)$ & = & $\{ b \in B | \exists a \in A . (a,b) \in f \}$
+    \end{tabular}
+\]
+
+\textbf{Proposición:} Si se tiene una función parcial $f: A \rightharpoonup B$, entonces $f$ será una función si $\text{dom}(f) = A$.
+
+\subsection{Tipos de funciones}
+Asumiendo una función $f: A \rightarrow B$, las funciones se clasifican como:
+\begin{itemize}
+    \item Inyectiva: Una función es inyectiva si es que no existen dos elementos de $A$ con la misma imagen. \[ \forall a_1, a_2 \in A . f(a_1) = f(a_2) \rightarrow a_1 = a_2 \]
+    \item Sobreyectiva: Una función es sobreyectiva si es que todo elemento de $B$ tiene una preimagen. \[ \forall b \in B . \exists a \in A . (a,b) \in f \]
+    \item Biyectiva: Inyectiva y sobreyectiva simultaneamente.
+\end{itemize}
+
+\subsection{Función inversa y composición}
+
 \end{document}
