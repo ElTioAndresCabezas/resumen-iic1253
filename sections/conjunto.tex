@@ -739,11 +739,11 @@ Asumiendo una función $f: A \rightarrow B$, las funciones se clasifican como:
     \item Biyectiva: Inyectiva y sobreyectiva simultaneamente.
 \end{itemize}
 
-\subsection{Función inversa y composición}
+\subsection{Función inversa, composición y caracterización}
 Similar a las relaciones, las funciones tienen una forma inversa y se puede componer.
 \begin{itemize}
     \item Función inversa: $f^{-1}$ son todos los pares $(a,b)$ tal que $(b,a)$ existe en $f$. \[ f^{-1} = \{ (a,b) | (b,a) \in f \} \]
-    \item Composición de funciones: $f_1 \circ f_2$, con $f_1 \rightarrow A \rightarrow B$ y $f_2 \rightarrow B \rightarrow C$, son todos los elementos $(a,b)$ tal que exista un $c$ que permita crear un ``puente'' entre $f_1$ y $f_2$. \[ f_1 \circ f_2 = \{ (a,b) | \exists c \in B . (a,c) \in f_1 \wedge (c,b) \in f_2 \} \]
+    \item Composición de funciones: $f_1 \circ f_2$, con $f_1: A \rightarrow B$ y $f_2: B \rightarrow C$, son todos los elementos $(a,c)$ tal que exista un $c$ que permita crear un ``puente'' entre $f_1$ y $f_2$. \[ f_1 \circ f_2 = \{ (a,c) | \exists b \in B . (a,b) \in f_1 \wedge (b,c) \in f_2 \} \]
     \[ f_2(f_1(a)) = c \]
 \end{itemize}
 Esto nos entrega algunas propiedades interesantes. Si se tiene la función $f: A \rightarrow B$, entonces
@@ -762,8 +762,13 @@ Esto nos entrega algunas propiedades interesantes. Si se tiene la función $f: A
 \]
 
 \subsection{Principio del Palomar}
-
-
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[scale=0.35]{palomar.png}
+\end{wrapfigure}
+\textit{``Si $N$ palomas se distribuyen en $M$ palomares, y tengo más palomas que palomares ($M > N$), entonces al menos habrá un palomar con más de una paloma.''}\\
+Para las cosas con las que tendremos que lidiar en el curso, el principio del palomar dice que, considerando un $f: A \rightarrow B$ y $|B| < |A|$, entonces $f$ \textbf{NO} es inyectiva.
+\[ \exists a_1, a_2 \in A . a_1 \not= a_2 \wedge f(a_1) = f(a_2) \]
 
 
 \end{document}
