@@ -828,7 +828,40 @@ Destacar que \textbf{NO TODOS} los conjuntos son numerables. Por ejemplo, el con
     \includegraphics[scale=0.16]{GranHotelHillbert.jpeg}
 \end{wrapfigure}
 Esta paradoja fue enunciada por \textit{David Hilbert (1862-1943)}, la cual habla de un hotel ficticio con una cantidad infinita de habitaciones, el cual se encuentra lleno. Llega un nuevo huésped al hotel y es su tarea entregarle una habitación. ¿Cómo puede asignarle una habitación? ¡Desplazando a cada uno de los huéspedes actuales a la habitación siguiente! El huésped de la habitación 1 se deberá ir a la habitación 2 y así.\\
-Si está interesado en comprender mejor esta paradoja, aconsejo mirar el \href{https://www.youtube.com/watch?v=OxGsU8oIWjY}{video de Veritasium}\footnote{El link del video es: https://www.youtube.com/watch?v=OxGsU8oIWjY} en donde se habla de algunas de las implicancias que tiene esta paradoja. Este video se encuentra en inglés, pero una \href{https://www.youtube.com/watch?v=4c8vG-mxuao}{versión en español}\footnote{El link del video es: https://www.youtube.com/watch?v=4c8vG-mxuao} se encuentra disponible también.
+Si está interesado en comprender mejor esta paradoja, aconsejo mirar este \href{https://www.youtube.com/watch?v=OxGsU8oIWjY}{video de Veritasium}\footnote{El link del video es: https://www.youtube.com/watch?v=OxGsU8oIWjY} en donde se habla de algunas de las implicancias que tiene esta paradoja. Este video se encuentra en inglés, pero una \href{https://www.youtube.com/watch?v=4c8vG-mxuao}{versión en español}\footnote{El link del video es: https://www.youtube.com/watch?v=4c8vG-mxuao} se encuentra disponible también.
+
+\newpage
+
+\subsection{Teorema de Cantor}
+Teniendo un conjunto $A$ no vacio, el Teorema de Cantor nos dice que no existe una biyección entre $A$ y su conjunto potencia $2^A$.\\
+Para demostrar este teorema, \textit{Georg Cantor (1845 - 1918)} creó una técnica la cual se conoce como el método de diagonalización de Cantor.\footnote{Puede encontrar una demostración del Teorema de Cantor usando su método en el anexo de este resumen.}
+
+\subsection{¿Hay algún infinito entremedio?}
+Se tiene la hipótesis siguiente\\
+\textit{No existe ningún conjunto $A$ tal que: $|\mathds{N}| < |A| < |\mathds{R}|$} $\sim$ David Hilbert
+Actualmente no se ha logrado demostrar ni desmentir esta hipótesis, aunque cabe destacar que con los axiomas de teoria de conjuntos:
+\begin{itemize}
+    \item 1940 - Kurt G\"{o}del: No se puede demostrar que la hipótesis es falsa.
+    \item 1963 - Paul Cohen: No se puede demostrar que la hipótesis es verdadera.
+\end{itemize}
+
+\subsection{Solución a los problemas de decisión}
+Consideremos programas escritos en algunos lenguajes de programación, como \textit{Python} o \textit{C++}\\
+Sea $\mathcal{I}$ un conjunto de inputs y $P: \mathcal{I} \rightarrow \{ 0,1 \}$ un problema de decisión.\\
+Nos referimos a una solución \texttt{Program}, correspondiente a un programa computacional de Python o C++, el cual recibe inputs en $\mathcal{I}$ y retorna un output $0$ o $1$. Una solución \texttt{Program} es una solución a un problema de decisión $P$ si para todo input $X \in \mathcal{I}$ se cumple que
+\[ P(X) = 1 \leftrightarrow \text{al ejecutar \texttt{Program} con } X \text{, este retorna } 1 \]
+Ejemplo: ¿Es este número primo?
+\[ \text{Primo}: \mathds{N} \rightarrow \{ 0,1 \} \quad ; \quad \text{Primo}(n) = 1 \text{ si y solo si n es un número primo} \]
+Se puede modelar el siguiente programa de Python para resolver el problema
+\begin{minted}{python}
+def is_prime(n):
+    if n % 2 == 0 and n > 2:
+        return 0
+    for i in range(3,n):
+        if n % i == 0:
+            return 0
+    return 1
+\end{minted}
 
 
 
