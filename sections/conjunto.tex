@@ -863,6 +863,9 @@ def is_prime(n):
     return 1
 \end{minted}
 
+Recordemos que el codigo que vemos acá arriba corresponde a una abstracción solamente. El computador solamente entiende una secuencia de $1$s y $0$s, por lo que podemos representar todo programa computacional que es capaz de resolver un problema, usando solamente una palabra de ceros y unos. El conjunto de todas las palabras $\{ 0,1 \}^*$ es numerable, por lo que la cantidad de programas computacionales que son posibles también es numerable.\\
+Ahora que sabemos que la cantidad de programas computacionales posibles es una cantidad numerable, \textit{¿cuántos problemas de decisión existen?} Podemos decir que un problema de decisión se puede representar como una función $P: \{ 0,1 \}^* \rightarrow \{ 0,1 \}$. Se define $\mathcal{P}$ como el conjunto de todos los problemas de decisión, de forma que $\mathcal{P} = \{ P: \{ 0,1 \}^* \rightarrow \{ 0,1 \} \}$. Se tiene que los conjuntos $\mathcal{P}$ y $2^{\{ 0,1 \}^*}$ son equinumerosos, por lo que la cantidad de problemas de decisión no es numerable.\\
+Es por esto que hay problemas de decisión los cuales no pueden ser modelados en un computador. Con esto, nos referimos a que hay problemas que no tienen algoritmo.
 
 
 
