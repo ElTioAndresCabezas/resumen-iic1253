@@ -948,7 +948,7 @@ Para todo algoritmo $A$ y su conjunto de inputs $I$ se puede tener un mejor caso
 
 \section{Principio de Inducción}
 \subsection{Principio de inducción simple}
-Para una afirmación $P(x)$ sobre los naturales, si $P(x)$ cumple que
+Para una afirmación $P(n)$ sobre los naturales, si $P(n)$ cumple que
 \begin{itemize}
     \item $P(0)$, $P(1)$, \ldots, $P(k)$ son verdaderos
     \item Para todo $n \in \mathds{N}$, si $P(n)$ es verdadero, entonces $P(n + 1)$ también es verdadero.
@@ -971,8 +971,21 @@ En lógica de predicados, esto se expresa como (forma general)
 \subsubsection{Caso base extendido}
 \[ (\ P(k) \wedge ( \forall n \geq k . P(n) \rightarrow P(n + 1) )\ ) \rightarrow \forall n \geq k\ .\ P(n) \]
 
-\subsection{Principio de inducción fuerte}
 
+\subsection{Principio de inducción fuerte}
+Para una afirmación $P(n)$ sobre los naturales, si $P(n)$ cumple que para todo $n \in \mathds{N}$
+\[ \text{Si } P(k) \text{ es verdadero para todo } k < n \text{, entonces } P(n) \text{ es verdadero} \]
+Entonces, para todo $n \in \mathds{N}$ se tiene que $P(n)$ es verdadero.\\
+En lógica de predicados, esto se ve como
+\[ (\ \forall n\ .\ (\forall k < n\ .\ P(k)) \rightarrow P(n) \ ) \rightarrow \forall n . P(n) \]
+
+\subsection[Axiomas de Peano]{Axiomas de $\mathds{N}$ - Axiomas de Peano}
+\begin{enumerate}
+    \item El número $0 \in \mathds{N}$
+    \item Si $n \in \mathds{N}$, entonces $(n + 1) \in \mathds{N}$ donde $n + 1$ es sucesor de $n$.
+    \item Todo $n \in \mathds{N}$, a excepción de $n \not= 0$, tiene un antecesor en $\mathds{N}$
+    \item Principio del Buen Orden: Todo subconjunto $A \subseteq \mathds{N}$ tiene un elemento mínimo.
+\end{enumerate}
 
 
 
