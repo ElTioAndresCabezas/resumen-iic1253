@@ -870,9 +870,9 @@ Es por esto que hay problemas de decisión los cuales no pueden ser modelados en
 \section{Notación Asintótica}
 Con $g: \mathds{N} \rightarrow \mathds{R}$ una función cualquiera, se pueden definir las siguientes notaciones\dots
 \subsection{Notación $\mathcal{O}$}
-El conjunto $\mathcal{O}$ corresponde al conjunto de todas las funciones tales que
-\[ \exists c > 0 , n_0 . \forall n \geq n_0 . f(n) \leq c \cdot g(n) \]
-En otras palabras, corresponde a todas las funciones tales que al ponderarlas por algún valor positivo, estas sean mayores que $g(n)$ desde algún punto en adelante
+El conjunto $\mathcal{O}(g)$ corresponde al conjunto de todas las funciones tales que
+\[ \exists c > 0 . \exists n_0 . \forall n \geq n_0 . f(n) \leq c \cdot g(n) \]
+En otras palabras, corresponde a todas las funciones tales que sean menores que $g(n)$ ponderado con un algún valor positivo, desde algún punto en adelante
 
 \subsubsection{Propiedades de la notación}
 \begin{enumerate}
@@ -899,8 +899,15 @@ En otras palabras, corresponde a todas las funciones tales que al ponderarlas po
 \]
 
 \subsection{Notación $\Omega$}
+El conjunto $\Omega(g)$ corresponde al conjunto de todas las funciones tales que
+\[ \exists c > 0 . \exists n_0 . \forall n \geq n_0 . f(n) \geq c \cdot g(n) \]
+En palabras simples, es lo mismo que la notación $\mathcal{O}$, pero ahora, $f$ debe ser mayor que $g$ ponderado con un valor positivo.
 
 \subsection{Notación $\Theta$}
+El conjunto $\Theta(g)$ corresponde al conjunto de todas las funciones tales que
+\[ \exists c_1, c_2 > 0 . \exists n_0 . \forall n \geq n_0 . c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) \]
+En palabras simples, es la intersección entre $\mathcal{O}(g)$ y $\Omega(g)$.
+
 
 
 \end{document}
