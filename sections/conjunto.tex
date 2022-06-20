@@ -656,8 +656,8 @@ Por otro lado, estas cosas no serían funciones
         \draw[-stealth, blue] (a3) -- (b1);
     \end{tikzpicture}
 \]
-\color{red}$f_2: A \rightarrow B$: Esto no es función, debido a que un elemento de $A$ se relaciona con más de un elemento de $B$ (También no relaciona todos los elementos de $A$)\\
-\color{blue}$f_3: A \rightarrow B$: Esto no es función, debido a que no todos los elementos de $A$ se relacionan con algún elemento de $B$.\color{black}\\
+{\color{red}$f_2: A \rightarrow B$: Esto no es función, debido a que un elemento de $A$ se relaciona con más de un elemento de $B$ (También no relaciona todos los elementos de $A$)\\
+\color{blue}$f_3: A \rightarrow B$: Esto no es función, debido a que no todos los elementos de $A$ se relacionan con algún elemento de $B$.}\\
 Una función siempre se puede ver como tabla, cosa que en la mayoría de casos hace que sea más facil visualizarla y entenderla que los diagramas de antes. Por ejemplo, para la $f_1$ definida antes
 \[
     \left.
@@ -867,6 +867,40 @@ Recordemos que el codigo que vemos acá arriba corresponde a una abstracción so
 Ahora que sabemos que la cantidad de programas computacionales posibles es una cantidad numerable, \textit{¿cuántos problemas de decisión existen?} Podemos decir que un problema de decisión se puede representar como una función $P: \{ 0,1 \}^* \rightarrow \{ 0,1 \}$. Se define $\mathcal{P}$ como el conjunto de todos los problemas de decisión, de forma que $\mathcal{P} = \{ P: \{ 0,1 \}^* \rightarrow \{ 0,1 \} \}$. Se tiene que los conjuntos $\mathcal{P}$ y $2^{\{ 0,1 \}^*}$ son equinumerosos, por lo que la cantidad de problemas de decisión no es numerable.\\
 Es por esto que hay problemas de decisión los cuales no pueden ser modelados en un computador. Con esto, nos referimos a que hay problemas que no tienen algoritmo.
 
+\section{Notación Asintótica}
+Con $g: \mathds{N} \rightarrow \mathds{R}$ una función cualquiera, se pueden definir las siguientes notaciones\dots
+\subsection{Notación $\mathcal{O}$}
+El conjunto $\mathcal{O}$ corresponde al conjunto de todas las funciones tales que
+\[ \exists c > 0 , n_0 . \forall n \geq n_0 . f(n) \leq c \cdot g(n) \]
+En otras palabras, corresponde a todas las funciones tales que al ponderarlas por algún valor positivo, estas sean mayores que $g(n)$ desde algún punto en adelante
+
+\subsubsection{Propiedades de la notación}
+\begin{enumerate}
+    \item $\forall a,b > 1 . \log_a(n) \in \mathcal{O}(log_b(n))$
+    \item $\forall a < b \in \mathds{N} . a^n \in \mathcal{O}(b^n) \wedge b^n \not\in \mathcal{O}(a^n)$
+    \item $\forall a \in N . a^n \in \mathcal{O}(n!) \wedge n! \not\in \mathcal{O}(a^n)$
+    \item $n! \in \mathcal{O}(2^{n \cdot \log(n)})$
+\end{enumerate}
+\subsubsection{Jerarquía de la notación}
+\[
+    \begin{tabular}{rl}
+        Notación & Nombre \\ \hline
+        $\mathcal{O}(1)$         & Constante \\
+        $\mathcal{O}(\log(n))$   & Logarítmico \\
+        $\mathcal{O}(n)$         & Lineal \\
+        $\mathcal{O}(n \log(n))$ & n $\log$(n) \\
+        $\mathcal{O}(n^2)$       & Cuadrático \\
+        $\mathcal{O}(n^3)$       & Cúbico \\
+        $\mathcal{O}(n^m)$       & Polinomial \\
+        $\mathcal{O}(k^n)$       & Exponencial \\
+        $\mathcal{O}(n!)$        & Factorial \\
+        
+    \end{tabular}
+\]
+
+\subsection{Notación $\Omega$}
+
+\subsection{Notación $\Theta$}
 
 
 \end{document}
