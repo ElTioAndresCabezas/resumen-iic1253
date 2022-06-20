@@ -210,7 +210,7 @@ En un grafo, los elementos que están presentes en $V$ los llamamos \textit{vér
 \subsection{Pares Ordenados}
 Para dos elementos $a$ y $b$ se define el par ordenado $(a,b)$ como
 \[ (a,b) = \{ \{ a \}, \{ a,b \} \} \]
-De forma mas informal, decimos que $(a,b)$ es un par ordenado si es que el primer elemento ($a$) se distingue del segundo elemento ($b$). Por esto, tenemos que $(a,b) \not= (b,a)$.\\
+De forma mas informal, decimos que $(a,b)$ es un par ordenado si es que el primer elemento ($a$) se distingue del segúndo elemento ($b$). Por esto, tenemos que $(a,b) \not= (b,a)$.\\
 \textbf{Generalización:} Se define una \textit{n-tupla ordenada} como
 \[ (a_1, a_2, \ldots, a_n) = ((a_1, a_2, \ldots, a_{n-1}), a_n) \]
 
@@ -327,7 +327,7 @@ Sea $A$ un conjunto y $R \subseteq A \times A$. Se definen las siguientes operac
 \begin{itemize}
     \item Proyección 1: $\pi_1(R)$ son todos los elementos que estan en la primera componente de $R$ (No se consideran los duplicados).
     \[ \pi_1(R) = \{ x \ | \ \exists y \in A . (x,y) \in R \} \]
-    \item Proyección 2: $\pi_2(R)$ son todos los elementos que están en la segunda componente de $R$ (No se consideran los duplicados).
+    \item Proyección 2: $\pi_2(R)$ son todos los elementos que están en la segúnda componente de $R$ (No se consideran los duplicados).
     \[ \pi_2(R) = \{ y \ | \ \exists x \in A . (x,y) \in R \} \]
     \item Inverso: $R^{-1}$ son todos los pares $(x,y)$ de la relación $R$, pero al revés (como $(y,x)$). Más formalmente escrito como:
     \[ R^{-1} = \{ (x,y) \ | \ (y,x) \in R \} \]
@@ -591,7 +591,7 @@ Sea $A$ un conjunto y $\mathcal{S} \subseteq 2^A$. Se dice que $\mathcal{S}$ es 
 \end{itemize}
 
 \subsection{Clases de equivalencia}
-Sea $A$ un conjunto, $\simeq \subseteq A \times A$ una relación de equivalencia y $x \in A$. La clase de equivalencia de $x$ segun $\simeq$ corresponde a
+Sea $A$ un conjunto, $\simeq \subseteq A \times A$ una relación de equivalencia y $x \in A$. La clase de equivalencia de $x$ según $\simeq$ corresponde a
 \[ [x]_\simeq = \{ y \in A | x \simeq y \} \]
 En palabras simples, $[x]_\simeq$ corresponde a todos los elementos presentes en $A$ que son iguales a $x$.
 
@@ -787,7 +787,7 @@ Se dice que un conjunto es finito si es que existe un $n$ tal que $|A| = |\{ 0,1
 \subsection{Cardinalidad de conjuntos infinitos}
 Hagamos un analisis de un ejemplo: Supongamos un conjunto $\mathbb{P}$ compuesto por todos los numeros pares
 \[ \mathbb{P} = \{ 0,2,4,6,8,\ldots \} \]
-Este conjunto es infinito. Si lo pensamos, $\mathds{N}$ (el conjunto de los naturales) también es infinito. ¿Tendrán $\mathbb{P}$ y $\mathds{N}$ la misma cardinalidad? Nuestra definición de equinumerosidad nos será util. Hay una biyección entre ambos conjuntos
+Este conjunto es infinito. Si lo pensamos, $\mathds{N}$ (el conjunto de los naturales) también es infinito. ¿Tendrán $\mathbb{P}$ y $\mathds{N}$ la misma cardinalidad? Nuestra definición de equinumerosidad nos será útil. Hay una biyección entre ambos conjuntos
 \[
     \begin{tikzpicture}
         \node (Nat0) {$\mathds{N} =$ \textbraceleft };
@@ -869,7 +869,7 @@ Es por esto que hay problemas de decisión los cuales no pueden ser modelados en
 
 \section{Notación Asintótica}
 Con $g: \mathds{N} \rightarrow \mathds{R}$ una función cualquiera, se pueden definir las siguientes notaciones\dots
-\subsection{Notación $\mathcal{O}$}
+\subsection[Notación O]{Notación $\mathcal{O}$}
 El conjunto $\mathcal{O}(g)$ corresponde al conjunto de todas las funciones tales que
 \[ \exists c > 0 . \exists n_0 . \forall n \geq n_0 . f(n) \leq c \cdot g(n) \]
 En otras palabras, corresponde a todas las funciones tales que sean menores que $g(n)$ ponderado con un algún valor positivo, desde algún punto en adelante
@@ -898,15 +898,81 @@ En otras palabras, corresponde a todas las funciones tales que sean menores que 
     \end{tabular}
 \]
 
-\subsection{Notación $\Omega$}
+\subsection[Notación Omega]{Notación $\Omega$}
 El conjunto $\Omega(g)$ corresponde al conjunto de todas las funciones tales que
 \[ \exists c > 0 . \exists n_0 . \forall n \geq n_0 . f(n) \geq c \cdot g(n) \]
 En palabras simples, es lo mismo que la notación $\mathcal{O}$, pero ahora, $f$ debe ser mayor que $g$ ponderado con un valor positivo.
 
-\subsection{Notación $\Theta$}
+\subsection[Notación Theta]{Notación $\Theta$}
 El conjunto $\Theta(g)$ corresponde al conjunto de todas las funciones tales que
 \[ \exists c_1, c_2 > 0 . \exists n_0 . \forall n \geq n_0 . c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) \]
 En palabras simples, es la intersección entre $\mathcal{O}(g)$ y $\Omega(g)$.
+
+\section{Análisis de Algoritmos}
+\subsection{¿Qué es un algoritmo?}
+Un algoritmo corresponde a una secuencia finita de instrucciones para realizar una computación o resolver un problema. Los algoritmos se pueden dar en cualquier lenguaje o de cualquier forma, y estan presentes en un montón de lugares, incluso fuera de la matemática y la computación. (Por ejemplo: Una receta para cocinar brownies es un algoritmo.)\\
+Cuando trabajamos con algoritmos, una cosa que nos interesa es saber la eficiencia de este. Hay muchos factores que pueden determinar que tan eficiente es nuestro algoritmo, pero el que estudiaremos aquí es el tiempo.
+\subsection{Eficiencia de un algoritmo con respecto al tiempo}
+Para un algoritmo $A$ sobre un conjunto de inputs $\mathcal{I}$ se define la función
+\[ \text{tiempo}_A(I) : \mathcal{I} \rightarrow \mathds{N} \quad ; \quad \text{tiempo}_A(I) = \text{Número de pasos realizados por $A$ con input $I$} \]
+Considerando que ahora tenemos una función que nos dice cuanto tiempo se demora un algoritmo en resolver un problema, podemos definir un poco más a la eficiencia. Decimos que un algoritmo $A$ es el más eficiente si se cumple que para todo algoritmo $B$ que realiza el mismo cómputo o resuelve el mismo problema, logra cumplir que
+\[ \forall I \in \mathcal{I}\ .\ \text{tiempo}_A(I) \leq \text{tiempo}_B(I) \]
+Destacar que esta definición no esta exenta de problemas, principalmente por el hecho de que no hemos definido como se puede medir el tiempo. El tiempo que demora un algoritmo puede verse definido por muchas cosas, como la cantidad de pasos a resolver y que tan complejo puede llegar a ser cada paso del algoritmo. Por ahora, para poder simplificar las cosas, para nosotros el tiempo va a consistir en la cantidad de pasos que tiene el algoritmo para lograr resolver un problema.
+
+\subsection{Uso de notación asintótica en algoritmos}
+La notación asintótica nos puede resultar útil para definir el tiempo de un algoritmo.\\
+Por ejemplo, considere el siguiente algoritmo matemático escrito en Python.
+\begin{minted}{python}
+for i in range(1, n):
+    for j in range(1, i):
+        x = x + 1
+\end{minted}
+¿Cuántas veces se ejecuta la linea \texttt{x = x + 1} al cambiar \texttt{n}?\\
+Analizando lo que ocurre en este código, el loop \texttt{for j in range(1, i)} es ejecutado \texttt{i} veces. Este se encuentra inmerso en un loop \texttt{for i in range(1, n)}, lo que significa que en la primera iteración se ejecutará 1 vez, en la siguiente 2 veces, en la siguiente 3 veces y así, hasta llegar a la iteración numero \texttt{n}, en donde se ejecutará \texttt{n} veces. Sumando todo\dots
+\[ \text{Tiempo}_{\text{for\_loop}}(n) = 1 + 2 + 3 + \ldots + n - 1 + n = \frac{n \cdot (n + 1)}{2} \]
+Resulta que
+\[\frac{n \cdot (n + 1)}{2} \in \Theta(n^2) \]
+Entonces, la cantidad de veces que se ejecuta \texttt{x = x + 1} es $\Theta(n^2)$
+
+\subsection{Tamaño del input}
+Para un conjunto de inputs $\mathcal{I}$, se define su función tamaño como
+\[ |\cdot|: \mathcal{I} \rightarrow \mathds{N} \quad ; \quad |I| = \text{Tamaño de $I$ según su representación} \]
+Ejemplo: Para una palabra de bits $w \in \{ 0,1 \}^*$; $|w| = $ largo de la palabra $w$ o número de bits.\\
+
+La definición más general que tenemos de $|I|$ es
+\[ |I| = \text{Número de bits de una codificación ``razonable'' de $I$} \]
+
+\subsection{Tipos de complejidad}
+Para todo algoritmo $A$ y su conjunto de inputs $I$ se puede tener un mejor caso y un peor caso.
+\[ \text{peor-caso}_A(n) = \max_{I \in \mathcal{I}}\{ \text{tiempo}_A(I)\ |\ |I| = n \} \quad ; \quad \text{mejor-caso}_A(n) = \min_{I \in \mathcal{I}}\{ \text{tiempo}_A(I)\ |\ |I| = n \} \]
+
+\section{Principio de Inducción}
+\subsection{Principio de inducción simple}
+Para una afirmación $P(x)$ sobre los naturales, si $P(x)$ cumple que
+\begin{itemize}
+    \item $P(0)$, $P(1)$, \ldots, $P(k)$ son verdaderos
+    \item Para todo $n \in \mathds{N}$, si $P(n)$ es verdadero, entonces $P(n + 1)$ también es verdadero.
+\end{itemize}
+entonces, para todo $n \in \mathds{N}$ se tiene que $P(n)$ debe ser verdadero.\\
+En lógica de predicados, esto se expresa como (forma general)
+\[
+    \begin{tikzpicture}
+        \node at (0,0) (ec) {$(\ P(0) \wedge P(1) \wedge P(2) \ldots \wedge P(k) \wedge ( \forall n \geq k . P(n) \rightarrow P(n + 1) )\ ) \rightarrow \forall n\ .\ P(n)$};
+        \draw[decorate, decoration = {brace}](-1,-0.4) -- (-5.5,-0.4);
+        \draw[decorate, decoration = {brace}](3.5,-0.4) -- (-0.5,-0.4);
+        \node at (-3.3,-0.8) (t1) {Caso(s) base};
+        \node at (1.5,-0.8) (t1) {Hipótesis};
+    \end{tikzpicture}
+\]
+
+\subsubsection{Caso base único}
+\[ (\ P(0) \wedge ( \forall n \geq k . P(n) \rightarrow P(n + 1) )\ ) \rightarrow \forall n\ .\ P(n) \]
+
+\subsubsection{Caso base extendido}
+\[ (\ P(k) \wedge ( \forall n \geq k . P(n) \rightarrow P(n + 1) )\ ) \rightarrow \forall n \geq k\ .\ P(n) \]
+
+\subsection{Principio de inducción fuerte}
+
 
 
 
