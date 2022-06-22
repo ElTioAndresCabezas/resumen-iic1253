@@ -987,7 +987,53 @@ En lógica de predicados, esto se ve como
     \item Principio del Buen Orden: Todo subconjunto $A \subseteq \mathds{N}$ tiene un elemento mínimo.
 \end{enumerate}
 
+\section{Definiciones Recursivas}
+Una definición recursiva consiste en una definición que cuenta con las siguientes caracteristicas
+\begin{itemize}
+    \item Casos base sencillos
+    \item Reglas que reducen la definición a casos anteriores (en otras palabras, una definición que se basa en el caso anterior para explicar el siguiente).
+\end{itemize}
 
+\subsection{Definición recursiva de conjuntos}
+La definición recursiva de un conjunto $\mathds{S}$ consiste en:
+\begin{itemize}
+    \item Un conjunto de base tal que cada elemento del conjunto pertenece a $\mathds{S}$.
+    \[ B = \{ b_1, b_2, \ldots, b_n \} \quad ; \quad \forall i < n\ .\ b_i \in \mathds{S} \]
+    \item Reglas recursivas $R$, donde mediante elementos que ya se sabe y se ha demostrado que existen dentro del conjunto, se puede demostrar que un nuevo elemento existe dentro del conjunto también.
+    \[ s_1, s_2, \ldots, s_m \in \mathds{S} \rightarrow R(s_1, s_2, \ldots, s_m) \in \mathds{S} \]
+    \item Una afirmación de exclusión, la cual se encarga de unir el conjunto base y las reglas recursivas definidas\footnote{Destacar que esto por lo general se omite y se asume que es de la forma mostrada debajo}.
+    \begin{figure}[H]
+        \centering
+        \textit{``El conjunto $\mathds{S}$ son todos los elementos que se construyen solamente}\\
+        \textit{a partir de $B$ y las reglas $R$''}
+    \end{figure}
+\end{itemize}
+\subsection{Funciones sobre conjuntos definidos recursivamente}
+Se pueden definir funciones sobre conjuntos definidos de forma recursiva. Estas funciones generalmente quedarán en una forma recursiva también.\\
+Ejemplo: Se define un conjunto $\Sigma^*$ de la siguiente forma, considerando $\Sigma$ un alfabeto
+\begin{itemize}
+    \item $\epsilon \in \Sigma^*$ (definición de la palabra vacía)
+    \item Si $w \in \Sigma^*$, entonces para todo $a \in \Sigma$ se tiene que $wa \in \Sigma^*$.
+\end{itemize}
+Ahora se define una función $f: \Sigma^* \rightarrow \mathds{N}$ que obtiene el largo de una palabra de $\Sigma^*$
+\[
+    \begin{tabular}{rcll}
+        $f(\epsilon)$ & $=$ & $0$\\
+        $f(wa)$ & $=$ & $f(w) + 1$ & para $w \in \Sigma^*$ y $a \in \Sigma$
+    \end{tabular}
+\]
+
+\subsection{Inducción estructural}
+La inducción estructural es practicamente una inducción pensada para demostrar una definición recursiva. Al igual que antes, se comienza con los casos base, para luego extrapolar mediante la regla recursiva de la definición a demostrar.\\
+Ahora, de una forma más formal, se tiene un conjunto definido recusivamente $\mathds{S}$, definido con un conjunto base $B$ y reglas recursivas $R$. Se define la capa $\mathds{S}[n]$ de $\mathds{S}$ para todo $n \geq 0$ como:
+\[
+    \begin{tabular}{rcl}
+        $\mathds{S}[0]$ & $=$ & $B$\\
+        $\mathds{S}[n + 1]$ & $=$ & $\mathds{S}[n] \cup \{ T(s_1, \ldots, s_k) | T \in R \wedge s_1, \ldots, s_n \in \mathds{S}[n] \}$
+    \end{tabular}
+\]
+Entonces, el principio de inducción estructural dice que para todo predicado $P(\cdot)$ sobre $\mathds{S}$, este es siempre verdadero si:
+\[ [(\forall s \in \mathds{S}[0]\ .\ P(s)) \wedge \forall n\ .\ (\forall s \in \mathds{S}[n]\ .\ P(s)) \rightarrow (\forall s' \in \mathds{S}[n + 1]\ .\ P(s'))] \rightarrow \forall s \in \mathds{S}\ .\ P(s) \]
 
 
 \end{document}
