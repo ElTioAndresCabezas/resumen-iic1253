@@ -2,6 +2,76 @@
 
 \begin{document}
 \section{Teoría de Números}
+\subsection{División}
+Considerando a $\mathds{Z}$ como el conjunto de los números enteros, para $a, b \in \mathds{Z}$ y $a \not= 0$, se dice que $a$ divide a $b$ si es que:
+\[ a | b \leftrightarrow \exists q \in \mathds{Z}\ .\ a \cdot q = b \]
+En el caso que esto no se cumpla, entonces $a$ no divide $b$, expresado como $a \slashed{|} b$
+\subsubsection{Propiedades de la división}
+\begin{itemize}
+    \item Si $a|b$ y $a|c$, entonces $a|(b + c)$
+    \item Si $a|b$, entonces $a|(b \cdot c)$ para todo $c \in \mathds{Z}$
+    \item Si $a|b$ y $b|c$, entonces $a|c$
+\end{itemize}
+\textbf{Corolario:} Si $a|b$ y $b|c$, entonces $a|(b \cdot m + n \cdot c)$, para todo $m, n \in \mathds{Z}$
+
+\subsection{Módulo}
+Con $a, b \in \mathds{Z}$, $a > 0$ y $a|b$, entonces existe un único par $q,r \in \mathds{Z}$ tal que
+$a \cdot q + r = b$. Esta corresponde a la definición de la división con resto. Mediante esta, se define el operador módulo (\modulo) y el operador división (\division).
+\[
+    \begin{tabular}{rcl}
+        $b \division a$ & $=$ & $q$\\
+        $b \modulo a$ & $=$ & $r$
+    \end{tabular}
+\]
+
+\subsection{Congruencia modular}
+Con $m \in \mathds{Z}$ y $m > 0$, diremos que para todo $a,b \in \mathds{Z}$, $a$ es congruente con $b \modulo m$ si:
+\[ a \equiv b (\modulo m) \quad \text{si, y solo si} \quad m | (a - b) \]
+
+\subsubsection{Propiedades de la congruencia modular}
+Para todo $a,b,m \in \mathds{Z}$, donde $m > 0$, se cumple que:
+\begin{itemize}
+    \item $a \equiv b (\modulo m)$
+    \item $a = b + m \cdot s$, para algún $s \in \mathds{Z}$
+    \item $(a \modulo m) = (b \modulo m)$
+\end{itemize}
+
+\subsubsection{Suma y multiplicación de la congruencia modular}
+Para todo $m > 0$, si $a \equiv b (\modulo m)$ y $c \equiv d (\modulo m)$ entonces:
+\[
+    \begin{tabular}{rcl}
+        $a + c$ & $\equiv$ & $b + d (\modulo m)$\\
+        $a \cdot c$ & $\equiv$ & $b \cdot d (\modulo m)$
+    \end{tabular}
+\]
+Adicionalmente\dots
+\[
+    \begin{tabular}{rcl}
+        $(a + b) \modulo m$ & $=$ & $((a \modulo m) + (b \modulo m)) \modulo m$\\
+        $(a \cdot b) \modulo m$ & $=$ & $((a \modulo m) \cdot (b \modulo m)) \modulo m$
+    \end{tabular}
+\]
+
+\subsubsection[Aritmética módulo m]{Aritmética módulo $m$ - Aritmética modular}
+Con $m > 0$, se define $\mathds{Z}_m = \{ 0, 1, 2, \ldots, m - 1 \}$. Entonces, para todo $a,b \in \mathds{Z}_m$, se definen las operaciones $+_m$ y $\cdot_m$
+\[
+    \begin{tabular}{rcl}
+        $a +_m b$ & $=$ & $(a+b) \modulo m$\\
+        $a \cdot_m b$ & $=$ & $(a \cdot b) \modulo m$
+    \end{tabular}
+\]
+
+La aritmética modular cumple con las siguientes propiedades:
+\[
+    \begin{tabular}{rl}
+        Clausura: & $a +_m b \in \mathds{Z}_m \quad ; \quad a \cdot_m b \in \mathds{Z}_m$\\
+        Conmutatividad & $a +_m b = b +_m a \quad ; \quad a \cdot_m b = b \cdot_m a$\\
+        Asociatividad & $a +_m (b +_m c) = (a +_m b) +_m c \quad ; \quad a \cdot_m (b \cdot_m c) = (a \cdot_m b) \cdot_m c$\\
+        Identidad: & $a +_m 0 = a \quad ; \quad a \cdot_m 1 = a$\\
+        Inverso aditivo: & $a \not= 0,\ \exists a' \in \mathds{Z}_m\ .\ a +_m a' = 0$\\
+        Distributividad: & $a \cdot_m (b +_m c) = (a \cdot_m b) + (a \cdot_m c)$\\
+    \end{tabular}
+\]
 
 
 \end{document}
