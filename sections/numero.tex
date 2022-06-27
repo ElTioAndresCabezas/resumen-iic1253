@@ -73,5 +73,62 @@ La aritmética modular cumple con las siguientes propiedades:
     \end{tabular}
 \]
 
+\subsection{Representación de los números}
+Sea $b > 1$. Si $n \in \mathds{N} - \{ 0 \}$, entonces $n$ se puede escribir de forma única como:
+\[ n = a_{k-1} b^{k-1} + a_{k-2} b^{k-2} + a_{k-3} b^{k-3} + \ldots + a_{2} b^{2} + a_{1} b^{1} + a_{0} = \sum_{i = 0}^{k - 1} a_i b^i \]
+con
+\begin{itemize}
+    \item $k \geq 1$
+    \item Para todo $i < k$, $a_i < b$
+    \item $a_{k-1} \not= 0$
+\end{itemize}
+
+Para poder simplificar un poco las cosas, vamos a establecer que todo número en representación de n en base b corresponde a la secuencia
+\[ (n)_b = a_{k-1} \ldots a_2 a_1 a_0 \]
+
+Como pequeño dato curioso, si esto le parece familiar al lector, es porque esto representa la forma en que nosotros escribimos los números normalmente, en donde la base $b = 10$.
+
+\subsubsection[Encontrando la representación de n en base b]{Encontrando la representación de $n$ en base $b$}
+Ahora que entendemos que podemos representar números usando distintas bases, ¿cómo podemos encontrar la representación de cualquier número en cualquier base?
+
+Si se tiene un número $n \in \mathds{N} - \{ 0 \}$ y $b > 0$, sabiendo que su representación debe ser de la forma $(n)_b = a_{k-1} \ldots a_2 a_1 a_0 $ y que por la división con resto, sabemos que $n = q \cdot b + r$, entonces tenemos que
+\[
+    \begin{tabular}{rcl}
+        $r$ & $=$ & $a_0$\\
+        $(q)_b$ & $=$ & $a_{k-1} \ldots a_1$\\
+    \end{tabular}
+\]
+
+\subsubsection[Suma de números en base b]{Suma de números en base $b$}
+La forma de llegar al algoritmo para la suma de números en base $b$ corresponde al siguiente, considerando a que $n$ y $m$ son números en base $b$.
+\[
+    \begin{tabular}{rcll}
+        $n + m$ & $=$ & $(n_{k-1} + m_{k-1}) \cdot b^{k-1} + \ldots + (n_{2} + m_{2}) \cdot b^{2} + (n_{1} + m_{1}) \cdot b + (n_{0} + m_{0})$ & /$(n_{0} + m_{0}) = c_0 \cdot b + s_0$\\
+        $n + m$ & $=$ & $(n_{k-1} + m_{k-1}) \cdot b^{k-1} + \ldots + (n_{2} + m_{2}) \cdot b^{2} + (n_{1} + m_{1} + c_0) \cdot b + s_0$ & /$(n_{1} + m_{1} + c_0) = c_1 \cdot b + s_1$\\
+        $n + m$ & $=$ & $(n_{k-1} + m_{k-1}) \cdot b^{k-1} + \ldots + (n_{2} + m_{2} + c_1) \cdot b^{2} + s_1 \cdot b + s_0$ & /$(n_{2} + m_{2} + c_1) = c_2 \cdot b + s_2$\\
+        &&&/ \ldots
+    \end{tabular}
+\]
+
+Si se continua aplicando hasta terminar con toda la ecuación, se obtiene que
+\[ n + m = c_{k-1} \cdot b^k + s_{k-1} \cdot b^{k-1} + \ldots + s_{1} \cdot b + s_0 \]
+
+Estas son muchas letras y posiblemente confunde demasiado, por lo que es mejor trabajar con un ejemplo de como se usa este algoritmo. Supongamos que queremos realizar la suma $(11)_2 + (14)_2$, donde $(11)_2 = 1011$ y $(14)_2 = 1110$.
+\[
+    \begin{tabular}{rrcll}
+        Se comienza con el primer dígito (101\textbf{1}; 111\textbf{0}): & $1 + 0$ & $=$ & $0 \cdot 2 + 1$ & Resultado: $1$\\
+        Se continua con el segundo dígito (10\textbf{1}1; 11\textbf{1}0): & $1 + 1 + 0$ & $=$ & $1 \cdot 2 + 0$ & Resultado: $01$\\
+        Se continua con el tercer dígito (1\textbf{0}11; 1\textbf{1}10): & $0 + 1 + 1$ & $=$ & $1 \cdot 2 + 0$ & Resultado: $001$\\
+        Se continua con el cuarto dígito (\textbf{1}011; \textbf{1}110): & $1 + 1 + 1$ & $=$ & $1 \cdot 2 + 1$ & Resultado: $1001$\\
+        Siguiente dígito de la base (5° dígito acumulado): & $0 + 0 + 1$ & $=$ & $0 \cdot 2 + 1$ & Resultado: $11001$
+    \end{tabular}
+\]
+
+Entonces, $(11)_2 + (14)_2 = 11001$.
+
+Este algoritmo es exactamente lo que se usa para realizar sumas de forma manual en base $10$.
+
+\subsubsection[Multiplicación de números en base b]{Multiplicación de números en base $b$}
+
 
 \end{document}
