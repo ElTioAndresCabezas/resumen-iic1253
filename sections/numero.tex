@@ -100,7 +100,7 @@ Si se tiene un número $n \in \mathds{N} - \{ 0 \}$ y $b > 0$, sabiendo que su r
 \]
 
 \subsubsection[Suma de números en base b]{Suma de números en base $b$}
-La forma de llegar al algoritmo para la suma de números en base $b$ corresponde al siguiente, considerando a que $n$ y $m$ son números en base $b$.
+La forma de llegar al algoritmo para la suma de números en base $b$ corresponde al siguiente, considerando que $n$ y $m$ son números en base $b$.
 \[
     \begin{tabular}{rcll}
         $n + m$ & $=$ & $(n_{k-1} + m_{k-1}) \cdot b^{k-1} + \ldots + (n_{2} + m_{2}) \cdot b^{2} + (n_{1} + m_{1}) \cdot b + (n_{0} + m_{0})$ & /$(n_{0} + m_{0}) = c_0 \cdot b + s_0$\\
@@ -129,6 +129,18 @@ Entonces, $(11)_2 + (14)_2 = 11001$.
 Este algoritmo es exactamente lo que se usa para realizar sumas de forma manual en base $10$.
 
 \subsubsection[Multiplicación de números en base b]{Multiplicación de números en base $b$}
+Considerando que $n$ y $m$ son números en base $b$, la multiplicación $m \cdot n$
+\[ n \cdot m = n(m_{k-1} b^{k-1} + \ldots + m_2 b^2 + m_1 b + m_0) = n \cdot (m_{k-1} b^{k-1}) + \ldots + n \cdot (m_2 b^2) + n \cdot (m_1 b) + n \cdot (m_0) \]
+Considerando esto, se define $p_i$ como
+
+\begin{equation*}
+    (p_i)_b = n \cdot (m_i \cdot b) =
+        \begin{cases}
+            0 & \text{si } m_i = 0\\
+            n_{k-1} \ldots n_1 n_0 0 \ldots 0 & \text{si } m_i = 1 \text{. La cantidad de ceros es } i
+        \end{cases}
+\end{equation*}
+
 
 
 \end{document}
