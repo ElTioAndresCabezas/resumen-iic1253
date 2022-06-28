@@ -12,6 +12,8 @@ El ordenamiento de los archivos es el siguiente
 - `lp.tex`: Corresponde a todos los contenidos vistos para Lógica Proposicional.
 - `logica_predicado.tex`: Corresponde a todos los contenidos vistos para Lógica de Predicados.
 - `conjunto.tex`: Corresponde a todos los contenidos vistos en Teoría de Conjuntos y Relaciones.
+- `numero.tex`: Corresponde a todos los contenidos vistos en Teoría de Números.
+- `grafos.tex`: Corresponde a todos los contenidos vistos en Teoría de Grafos.
 - `anexo.tex`: Corresponde a todo el contenido presente en el anexo final del resumen.
 
 ## Como compilar el LaTeX
