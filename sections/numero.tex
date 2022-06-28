@@ -16,39 +16,39 @@ En el caso que esto no se cumpla, entonces $a$ no divide $b$, expresado como $a 
 
 \subsection{Módulo}
 Con $a, b \in \mathds{Z}$, $a > 0$ y $a|b$, entonces existe un único par $q,r \in \mathds{Z}$ tal que
-$a \cdot q + r = b$. Esta corresponde a la definición de la división con resto. Mediante esta, se define el operador módulo (\modulo) y el operador división (\division).
+$a \cdot q + r = b$. Esta corresponde a la definición de la división con resto. Mediante esta, se define el operador módulo ($\mod$) y el operador división ($\division$).
 \[
     \begin{tabular}{rcl}
         $b \division a$ & $=$ & $q$\\
-        $b \modulo a$ & $=$ & $r$
+        $b \mod a$ & $=$ & $r$
     \end{tabular}
 \]
 
 \subsection{Congruencia modular}
-Con $m \in \mathds{Z}$ y $m > 0$, diremos que para todo $a,b \in \mathds{Z}$, $a$ es congruente con $b \modulo m$ si:
-\[ a \equiv b (\modulo m) \quad \text{si, y solo si} \quad m | (a - b) \]
+Con $m \in \mathds{Z}$ y $m > 0$, diremos que para todo $a,b \in \mathds{Z}$, $a$ es congruente con $b \mod m$ si:
+\[ a \equiv b (\mod m) \quad \text{si, y solo si} \quad m | (a - b) \]
 
 \subsubsection{Propiedades de la congruencia modular}
 Para todo $a,b,m \in \mathds{Z}$, donde $m > 0$, se cumple que:
 \begin{itemize}
-    \item $a \equiv b (\modulo m)$
+    \item $a \equiv b (\mod m)$
     \item $a = b + m \cdot s$, para algún $s \in \mathds{Z}$
-    \item $(a \modulo m) = (b \modulo m)$
+    \item $(a \mod m) = (b \mod m)$
 \end{itemize}
 
 \subsubsection{Suma y multiplicación de la congruencia modular}
-Para todo $m > 0$, si $a \equiv b (\modulo m)$ y $c \equiv d (\modulo m)$ entonces:
+Para todo $m > 0$, si $a \equiv b (\mod m)$ y $c \equiv d (\mod m)$ entonces:
 \[
     \begin{tabular}{rcl}
-        $a + c$ & $\equiv$ & $b + d (\modulo m)$\\
-        $a \cdot c$ & $\equiv$ & $b \cdot d (\modulo m)$
+        $a + c$ & $\equiv$ & $b + d (\mod m)$\\
+        $a \cdot c$ & $\equiv$ & $b \cdot d (\mod m)$
     \end{tabular}
 \]
 Adicionalmente\dots
 \[
     \begin{tabular}{rcl}
-        $(a + b) \modulo m$ & $=$ & $((a \modulo m) + (b \modulo m)) \modulo m$\\
-        $(a \cdot b) \modulo m$ & $=$ & $((a \modulo m) \cdot (b \modulo m)) \modulo m$
+        $(a + b) \mod m$ & $=$ & $((a \mod m) + (b \mod m)) \mod m$\\
+        $(a \cdot b) \mod m$ & $=$ & $((a \mod m) \cdot (b \mod m)) \mod m$
     \end{tabular}
 \]
 
@@ -56,8 +56,8 @@ Adicionalmente\dots
 Con $m > 0$, se define $\mathds{Z}_m = \{ 0, 1, 2, \ldots, m - 1 \}$. Entonces, para todo $a,b \in \mathds{Z}_m$, se definen las operaciones $+_m$ y $\cdot_m$
 \[
     \begin{tabular}{rcl}
-        $a +_m b$ & $=$ & $(a+b) \modulo m$\\
-        $a \cdot_m b$ & $=$ & $(a \cdot b) \modulo m$
+        $a +_m b$ & $=$ & $(a+b) \mod m$\\
+        $a \cdot_m b$ & $=$ & $(a \cdot b) \mod m$
     \end{tabular}
 \]
 
@@ -169,7 +169,21 @@ Para todo $a,b \in \mathds{Z} - \{0\}$
 \end{itemize}
 
 \subsection{Ecuaciones de Congruencias}
+Esto sirve como una especie de ``continuación'' a la congruencia modular.
 
+Se define una congruencia lineal como la ecuación de la siguiente forma
+\[ a x \equiv b (\mod m) \quad ; \quad m \in \mathds{N}-\{0\};\ a,b \in \mathds{Z};\ x \text{ variable} \]
 
+\subsubsection{Como resolver una ecuación de congruencia lineal}
+Para poder resolver $a x \equiv b (\mod m)$, se debe encontrar el inverso multiplicativo de $a$, o sea, $a^{-1}$ (No necesariamente $a^{-1} = \sfrac{1}{a}$), de forma que
+\[ a \cdot a^{-1} \equiv b (\mod m) \]
+Asumiendo que $a^{-1}$ existe, significa que podemos resolver la ecuación de la siguiente forma
+\[
+    \begin{tabular}{rcll}
+        $a x$ & $\equiv$ & $b (\mod m)$ & /$\cdot a^{-1}$\\
+        $(a \cdot a^{-1}) x$ & $\equiv$ & $a^{-1} b (\mod m)$ & /$a \cdot a^{-1} = 1$\\
+        $x$ & $\equiv$ & $a^{-1} b (\mod m)$\\
+    \end{tabular}
+\]
 
 \end{document}
