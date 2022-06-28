@@ -141,6 +141,19 @@ Considerando esto, se define $p_i$ como
         \end{cases}
 \end{equation*}
 
+\subsection{Máximo común divisor}
+Sea $a,b \in \mathds{Z} - \{0\}$. El máximo común divisor de $a$ y $b$ (o $\gcd(a,b)$) corresponde al mayor número $d$ tal que $d|a$ y $d|b$, simultaneamente. El $\gcd(a,b)$ podemos decir, en otras palabras, que corresponde al máximo del conjunto $D_{a,b}$, definido como
+\[ D_{a,b} = \{ c \in \mathds{Z}\ |\ c|a \wedge c|b \} \]
+
+\subsubsection[Algoritmo del MCD - Algoritmo de Euclides]{Algoritmo del MCD - Algoritmo de Euclides\footnote{Información obtenida desde \href{https://es.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm}{KhanAcademy}}}
+Para obtener el $\gcd(a,b)$, se puede usar el algoritmo de Euclides, el cual permite descomponer el problema en un problema más pequeño.
+\[
+    \begin{tabular}{rl}
+        $\gcd(a,b)$ & /$a = b \cdot q + r$\\
+        $\gcd(a,b) = \gcd(b,r)$ & /Repetir de forma iterativa hasta poder determinar el MCD.      
+    \end{tabular}
+\]
+
 
 
 \end{document}
