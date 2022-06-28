@@ -2,6 +2,106 @@
 
 \begin{document}
 
+\section{Grafos}
+Un grafo no dirigido $G$ es un par $(V,E)$ donde $V \not= \emptyset$ corresponde al conjunto de nodos (o vertices) y $E \subseteq 2^V$ corresponde al conjunto de conexiones o aristas del grafo (destacar que todo $e \in E$ debe ser una tupla de dos valores, como por ejemplo $e = \{a,b\}$).
 
+Ejemplo:
+\[
+    \left.
+    \begin{tikzpicture}
+        \node (a) {a};
+        \node (b) [right=of a] {b};
+        \node (c) [below=of a] {c};
+        \node (d) [right=of c] {d};
+        \node (e) [right=of b] {e};
+        \node (f) [below=of e] {f};
+
+        \draw (a) -- (b);
+        \draw (a) -- (d);
+        \draw (a) -- (c);
+        \draw (b) -- (e);
+        \draw (c) -- (d);
+        \draw (d) -- (e);
+        \draw (d) -- (f);
+        \draw (e) -- (f);
+    \end{tikzpicture}
+    \right. \hspace{1em}\raisebox{3em}{ \begin{tabular}{rcl}
+        $V$ & $=$ & $\{ a,b,c,d,e,f \}$\\
+        $E$ & $=$ & $\{ \{ a,b \}, \{ a,c \}, \{ a,d \}, \{ b,e \}, \{ c,d \}, \{ d,e \}, \{ d,f \}, \{ e,f \} \}$
+    \end{tabular}
+    }
+\]
+
+Cabe destacar que en un grafo no dirigido como este, no hay loops (conexiones que vayan de un nodo al mismo nodo), las aristas no tiene dirección (lo que significa que $\{ a,b \} = \{ b,a \}$) y para cada par de nodos solo puede haber una conexión.
+
+\subsection{Familias de grafos}
+\subsubsection{Grafos Completos (Cliques)}
+Un grafo completo o clique corresponde a un grafo de $n$ vertices tal que $K_n = (V,E)$, $|V| = n$ y $E = \{ \{u,v\} | u,v \in V \wedge u \not= v \}$. De forma más sencilla, un grafo completo es un grafo que conecta todos los nodos que contiene con todos los demás nodos.
+\[
+    \begin{tikzpicture}
+        \node (1) {1};
+        \node (empty_top) [left=of 1] {};
+        \node (2) [left=of empty_top] {2};
+        \node (empty1) [below=of 2] {};
+        \node (3) [left=of empty1] {3};
+        \node (empty2) [below=of 1] {};
+        \node (5) [right=of empty2] {5};
+        \node (empty3) [below=of empty_top] {};
+        \node (4) [below=of empty3] {4};
+
+        \draw (1) -- (2);
+        \draw (1) -- (3);
+        \draw (1) -- (4);
+        \draw (1) -- (5);
+
+        \draw (2) -- (3);
+        \draw (2) -- (4);
+        \draw (2) -- (5);
+
+        \draw (3) -- (4);
+        \draw (3) -- (5);
+
+        \draw (4) -- (5);
+        
+    \end{tikzpicture}
+\]
+
+\subsubsection{Linea}
+Un grafo de tipo linea consiste en un grafo de $n$ vertices tal que $L_n = (V,E)$, $V = \{ 1, 2, 3, \ldots, n - 1 \}$ y $E = \{ \{ i, i + 1 \} | 0 \leq i \leq n - 1 \}$. En palabras simples, la linea corresponde a un grafo en donde todos los nodos se conectan con el ``punto siguiente'' (asumiendo que se tiene un orden establecido previamente, como $1$, $2$, $3$, etc.)
+\[
+    \begin{tikzpicture}
+        \node (1) {1};
+        \node (2) [right=of 1] {2};
+        \node (3) [right=of 2] {3};
+        \node (4) [right=of 3] {4};
+        \node (5) [right=of 4] {5};
+
+        \draw (1) -- (2);
+        \draw (2) -- (3);
+        \draw (3) -- (4);
+        \draw (4) -- (5);
+    \end{tikzpicture}
+\]
+
+\subsubsection{Ciclo}
+Un grafo cíclico corresponde a un grafo de $n$ vertices tal que $C_n = (V,E)$, $V = \{ 0, 1, \ldots, n - 1 \}$ y $E = \{ \{ i, (i + 1) \mod n \} | 0 \leq i \leq n - 1 \}$. En otras palabras, corresponde a un grafo el cual forma una figura cíclica, en donde el último elemento de la cadena se debe unir con el primero.
+
+\[
+    \begin{tikzpicture}
+        \def \n {5}
+        \def \radius {3cm}
+        \def \margin {8} % margin in angles, depends on the radius
+
+        \foreach \s in {1,...,\n}
+        {
+        \node (\s) at ({360/\n * (\s - 1)}:\radius) {$\s$};
+        }
+        \draw (1) -- (2);
+        \draw (2) -- (3);
+        \draw (3) -- (4);
+        \draw (4) -- (5);
+        \draw (5) -- (1);
+    \end{tikzpicture}
+\]
 
 \end{document}
