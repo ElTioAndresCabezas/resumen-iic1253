@@ -92,9 +92,8 @@ Un grafo cíclico corresponde a un grafo de $n$ vertices tal que $C_n = (V,E)$, 
         \def \radius {3cm}
         \def \margin {8} % margin in angles, depends on the radius
 
-        \foreach \s in {1,...,\n}
-        {
-        \node (\s) at ({360/\n * (\s - 1)}:\radius) {$\s$};
+        \foreach \s in {1,...,\n}{
+            \node (\s) at ({360/\n * (\s - 1)}:\radius) {$\s$};
         }
         \draw (1) -- (2);
         \draw (2) -- (3);
@@ -103,5 +102,27 @@ Un grafo cíclico corresponde a un grafo de $n$ vertices tal que $C_n = (V,E)$, 
         \draw (5) -- (1);
     \end{tikzpicture}
 \]
+
+\subsection{Igualdad de grafos}
+Se dice que dos grafos $G_1 = (V_1, E_1)$ y $G_2 = (V_2, E_2)$ son isomorfos (denotado como $G_1 \cong G_2$) si se cumple que
+\[ f \text{ biyectiva}: V_1 \rightarrow V_2 \quad ; \quad \{u,v\} \in E_1 \leftrightarrow \{f(u), f(v)\} \in E_2 \]
+
+La relación de isomorfismo $\cong$ es una relación refleja, simétrica y transitiva. Se dice que una propiedad de un grafo $G$ es preservada bajo isomorfismo, si $G$ tiene una propiedad y $G \cong G'$, entonces $G'$ también tiene la propiedad.
+
+\subsection{Vertices y Grados}
+Para un grafo $G = (V,E)$ y dos vertices $u,v \in V$
+\begin{itemize}
+    \item $u$ y $v$ son adyacentes si y solo si $\{u,v\} \in E$
+    \item El grado de $u$ se define como: $\deg(u) = |\{ v \in V | \{u,v\} \in E \}|$
+\end{itemize}
+
+\textbf{Lema:} (handshaking)
+\begin{itemize}
+    \item Para todo grafo $G = (V,E)$ se cumple que $\sum_{v \in V} = 2 \cdot |E|$ (en palabras más simples, la suma de todos los grados de un grafo cualquiera siempre es $2 \cdot |E|$).
+    \item Todo grafo tiene una cantidad par de vertices con grado impar.
+\end{itemize}
+
+\subsection{Subgrafos}
+Un grafo $G' = (V',E')$ es un subgrafo de $G = (V,E)$ si $V' \subseteq V$ y $E' \subseteq E$, y se escribe como $G' \subseteq G$
 
 \end{document}
