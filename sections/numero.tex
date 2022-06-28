@@ -154,6 +154,22 @@ Para obtener el $\gcd(a,b)$, se puede usar el algoritmo de Euclides, el cual per
     \end{tabular}
 \]
 
+\subsection{Conjunto Generadores}
+Con $a,b \in \mathds{Z} - \{0\}$, se define el conjunto generador de $a$ y $b$ ($\langle a,b \rangle$) como
+\[ \langle a,b \rangle = \{ c \in \mathds{Z}\ |\ \exists s,t \in \mathds{Z}\ .\ c = a \cdot s + b \cdot t \} \]
+
+De forma más general, el conjunto generado por $a_1, \ldots, a_n$ se define como
+\[ \langle a_1, \ldots, a_n \rangle = \{ c \in \mathds{Z}\ |\ \exists s_1,s_2,\ldots,s_n \in \mathds{Z}\ .\ c = a_1 s_1 + a_2 s_2 + \ldots + a_n s_n \} \]
+
+\subsubsection{Identidad de Bézout}
+Para todo $a,b \in \mathds{Z} - \{0\}$
+\begin{itemize}
+    \item $\gcd(a,b)$ es el menor entero positivo tal que existe $s,t \in \mathds{Z}$: $\gcd(a,b) = sa + tb$
+    \item $\langle a,b \rangle = \langle \gcd(a,b) \rangle$
+\end{itemize}
+
+\subsection{Ecuaciones de Congruencias}
+
 
 
 \end{document}
