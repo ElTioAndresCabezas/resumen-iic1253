@@ -133,15 +133,32 @@ Una k-coloración de un grafo $G = (V,E)$ es una función $C: V \rightarrow \{0,
 Denotaremos como $\chi(G)$ al mínimo valor que puede adoptar $k$ tal que $G = (V,E)$ tenga una k-coloración. A este valor $\chi(G)$ lo llamaremos ``número cromático''. Cabe destacar que encontrar el número cromático es un problema muy complicado (se resume en colorear manualmente el grafo y probar hasta que se logre encontrar un valor que no se pueda disminuir).
 
 \subsection{Caminos}
-Un camino de un grafo $G = (V,E)$ corresponde a una secuencia de nodos del grafo, tal que cada nodo este conectado con el siguiente de la cadena, segun $E$.
+Un camino de un grafo $G = (V,E)$ corresponde a una secuencia de nodos del grafo, tal que cada nodo este conectado con el siguiente de la cadena, según $E$.
 
 \subsubsection{Camino simple}
 Un camino simple de un grafo $G = (V,E)$ corresponde a lo mismo que se definió anteriormente, pero además, añadiendo el requisito de que no se repitan nodos en la secuencia (o sea, que el camino no pase por el mismo lugar más de una vez).
+
+\subsubsection{Camino cerrado}
+Un camino cerrado de un grafo $G + (V,E)$ corresponde a lo mismo que se definió anteriormente, pero este camino también debe finalizar en el mismo lugar en donde comenzó. De manera más formal\dots
+\[ \text{Path} = v_0, v_1, \ldots, v_n \text{ tal que } \{ v_i, v_{i+1} \} \in E\ \forall i \in \{0, 1, \ldots, n-1\} \wedge v_0 = v_n \]
+
+\subsubsection{Ciclo}
+Un ciclo corresponde a un ciclo cerrado, en donde además, ningún nodo de la secuencia que define el camino se puede repetir.
 
 \subsection{Conexidad}
 Primero que nada, se dice que dos vertices de un grafo estan conectados si es que existe un camino de uno al otro. De ahí, sale la definición de un grafo conexo, el cual consiste en un grafo en donde todos los nodos estan conectados entre sí.
 
 Para un grafo $G = (V,E)$, se define la relación $R_G: V \times V$, tal que $(u,v) \in R_G$ si y solo si $u$ esta conectado con $v$.
+
+\subsection{Caminos y Tours Eulerianos}
+Se dice que un camino es Euleriano si es que este camino recorre todas las aristas de un grafo, exactamente una vez. Por otro lado, un tour Euleriano corresponde a un camino Euleriano cerrado.
+
+\subsubsection{¿Cómo verificamos si un grafo tiene un tour Euleriano?}
+Sea $G = (V,E)$ un grafo conexo. $G$ tiene un tour Euleriano si y solo si, todo vértice en $G$ tiene grado par.
+
+\subsection{Caminos y Tours Hamiltoneanos}
+Se dice que un camino es Hamiltoneano si es que este camino recorre todos los nodos de un grafo, exactamente una vez. Por otro lado, un tour Hamiltoneano corresponde a un camino Hamiltoneano cerrado.
+
 
 
 \end{document}
